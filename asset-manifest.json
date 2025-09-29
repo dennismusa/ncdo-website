@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ncdo-website/static/css/main.55dd6379.css",
+    "main.js": "/ncdo-website/static/js/main.8ffa98a3.js",
+    "static/media/ncdo4.jpg": "/ncdo-website/static/media/ncdo4.681663803e2c037e46bc.jpg",
+    "static/media/ncdo3.jpg": "/ncdo-website/static/media/ncdo3.33970a852d10f6195b24.jpg",
+    "static/media/partner2.jpg": "/ncdo-website/static/media/partner2.756daf24c8e94337f521.jpg",
+    "static/media/ncdo7.jpeg": "/ncdo-website/static/media/ncdo7.99c0d40d73fc32837a1d.jpeg",
+    "static/media/slick.svg": "/ncdo-website/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/ncdo-website/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/ncdo-website/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/ncdo-website/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/ncdo-website/index.html",
+    "main.55dd6379.css.map": "/ncdo-website/static/css/main.55dd6379.css.map",
+    "main.8ffa98a3.js.map": "/ncdo-website/static/js/main.8ffa98a3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55dd6379.css",
+    "static/js/main.8ffa98a3.js"
+  ]
+}
