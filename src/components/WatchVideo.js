@@ -21,7 +21,7 @@ export default function WatchVideo() {
         onClick={() => setOpen(true)}
         className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transform transition"
       >
-        🎥 Watch Video
+        🎥 Watch our videos
       </button>
 
       {/* Animated Modal */}

@@ -170,7 +170,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
           <p className="text-lg md:text-xl mb-4">
-            NCDO is dedicated to improving the lives of vulnerable communities in Ethiopia, Kenya, and Somalia. 
+            NCDO is dedicated to improving the lives of vulnerable communities in  Kenya. 
             Our mission is to build resilient, self-sufficient communities through sustainable programs in water, sanitation, food security, governance, and peace.
           </p>
           <p className="text-lg md:text-xl">
@@ -293,8 +293,8 @@ export default function HomePage() {
     </p>
     
     <div className="space-y-3 text-gray-700">
-      <p><strong>HQ:</strong> Kimana Town, Kajiado County, Kenya</p>
-      <p><strong>Email:</strong> dennismusa58@gmail.com</p>
+      <p><strong>HQ:</strong> Kajiado County,Kimana Town,Kenya</p>
+      <p><strong>Email:</strong> Olemusah@gmail.com</p>
       <p><strong>Phone:</strong> +254 726 214 345</p>
     </div>
     
