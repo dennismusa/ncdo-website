@@ -24,7 +24,7 @@ import partner5 from "../images/partner5.png";
 
 export default function HomePage() {
   // Programs array (all using ncdo7 image)
-   
+   const [menuOpen, setMenuOpen] = useState(false);
   const programs = [
     {
       title: "Wetlands Restoration and Management",
@@ -78,49 +78,80 @@ export default function HomePage() {
 
 {/* Navbar */}
 {/* Navbar */}
-<nav className="fixed top-0 left-0 w-full bg-[#1D347A] shadow-md px-4 sm:px-6 py-3 text-white z-50">
-  <div className="flex items-center justify-between">
-    {/* Logo + Text */}
-    <div className="flex items-center space-x-2">
-      <img src={ncdolgo} alt="NCDO Logo" className="w-16 h-10 object-contain" />
-      <span className="text-xs sm:text-sm md:text-base font-bold leading-tight">
-        NOOMAYIANAT <br /> Community Development
-      </span>
-    </div>
+   <nav className="fixed top-0 left-0 w-full bg-[#1D347A] shadow-md px-4 sm:px-6 py-3 text-white z-50">
+      <div className="flex items-center justify-between">
+        {/* Logo + Text */}
+        <div className="flex items-center space-x-2">
+          <img src={ncdolgo} alt="NCDO Logo" className="w-16 h-10 object-contain" />
+          <span className="text-xs sm:text-sm md:text-base font-bold leading-tight">
+            NOOMAYIANAT <br /> Community Development
+          </span>
+        </div>
 
-    {/* Desktop Links */}
-    <ul className="hidden md:flex space-x-6 font-semibold">
-      <li><Link to="/" className="hover:text-[#F2ECE8]">Home</Link></li>
-      <li><a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a></li>
-      <li><a href="#programs" className="hover:text-[#F2ECE8]">Programs</a></li>
-      <li><a href="#stories" className="hover:text-[#F2ECE8]">Impact</a></li>
-      <li><a href="#contact" className="hover:text-[#F2ECE8]">Contact Us</a></li>
-    </ul>
+        {/* Desktop Links */}
+        <ul className="hidden md:flex space-x-6 font-semibold">
+          <li><Link to="/" className="hover:text-[#F2ECE8]">Home</Link></li>
+          <li><a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a></li>
+          <li><a href="#programs" className="hover:text-[#F2ECE8]">Programs</a></li>
+          <li><a href="#stories" className="hover:text-[#F2ECE8]">Impact</a></li>
+          <li><a href="#contact" className="hover:text-[#F2ECE8]">Contact Us</a></li>
+        </ul>
 
-    {/* Donate Button (Desktop) */}
-    <Link
-      to="/donate"
-      className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
-    >
-      Donate
-    </Link>
-  </div>
+        {/* Donate Button (Desktop) */}
+        <Link
+          to="/donate"
+          className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
+        >
+          Donate
+        </Link>
 
-  {/* Mobile Menu – always visible */}
-  <div className="md:hidden bg-[#1D347A] flex flex-col items-center py-4 space-y-3 mt-2 rounded-lg shadow-lg font-semibold">
-    <Link to="/" className="hover:text-[#F2ECE8]">Home</Link>
-    <a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a>
-    <a href="#programs" className="hover:text-[#F2ECE8]">Programs</a>
-    <a href="#stories" className="hover:text-[#F2ECE8]">Impact</a>
-    <a href="#contact" className="hover:text-[#F2ECE8]">Contact Us</a>
-    <Link
-      to="/donate"
-      className="bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
-    >
-      Donate Now
-    </Link>
-  </div>
-</nav>
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-white focus:outline-none"
+          >
+            {menuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-[#1D347A] shadow-lg transform transition-transform duration-300 ease-in-out ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } md:hidden`}
+      >
+        <div className="flex flex-col items-start p-6 space-y-4 font-semibold">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="self-end text-white focus:outline-none"
+          >
+            ✕
+          </button>
+          <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Home</Link>
+          <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Who We Are</a>
+          <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Programs</a>
+          <a href="#stories" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Impact</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Contact Us</a>
+          <Link
+            to="/donate"
+            onClick={() => setMenuOpen(false)}
+            className="bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
+          >
+            Donate Now
+          </Link>
+        </div>
+      </div>
+    </nav>
 
 
 
