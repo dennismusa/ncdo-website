@@ -1,20 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
 
-// ✅ Logo
-import ncdologo from "../images/ncdolgo.jpg";
-
-// ✅ Background images (make sure these files exist in /src/images)
+// ✅ Background images
 import ncdo4 from "../images/ncdo4.jpg";
 import ncdo5 from "../images/ncdo5.jpeg";
 import ncdo7 from "../images/ncdo7.jpeg";
+import ncdolgo from "../images/ncdolgo.jpg";
 
 export default function Donate() {
-  // ✅ Slider settings
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", amount: "", method: "" });
+
   const settings = {
     dots: false,
     infinite: true,
@@ -25,53 +27,113 @@ export default function Donate() {
     pauseOnHover: false,
   };
 
+  // ✅ Flutterwave config
+  const config = {
+    public_key: "FLWPUBK_TEST-xxxxxxxxxxxxxxxxxxxxx-X", // replace with your Flutterwave Public Key
+    tx_ref: Date.now(),
+    amount: form.amount || 0,
+    currency: "KES",
+    payment_options: "card,mpesa",
+    customer: {
+      email: form.email,
+      phonenumber: "",
+      name: form.name,
+    },
+    customizations: {
+      title: "Noomayianat Community Development",
+      description: "Donation Support",
+      logo: ncdolgo,
+    },
+  };
+
+  const fwConfig = {
+    ...config,
+    text: "Donate Now",
+    callback: (response) => {
+      console.log(response);
+      closePaymentModal(); 
+      alert("Thank you for your donation!");
+    },
+    onClose: () => {},
+  };
+
   return (
     <div className="font-sans">
-      {/* ✅ Top Navbar */}
-      <nav className="bg-[#1D347A] shadow-md flex items-center justify-between px-6 py-4 text-white fixed top-0 w-full z-50">
-        {/* Logo */}
+      {/* ✅ Navbar */}
+      <nav className="fixed top-0 left-0 w-full bg-[#1D347A] shadow-md px-4 sm:px-6 py-4 text-white flex items-center justify-between z-50">
         <div className="flex items-center space-x-3">
-          <img src={ncdologo} alt="NCDO Logo" className="w-24 h-12 object-contain" />
-          <span className="font-bold text-lg">NCDO</span>
+          <img src={ncdolgo} alt="NCDO Logo" className="w-24 h-12 object-contain" />
+          <span className="text-sm sm:text-base md:text-lg font-bold leading-tight">
+            Noomayianat <br /> Community Development
+          </span>
         </div>
 
-        {/* Menu */}
+        {/* Desktop Links */}
         <ul className="hidden md:flex space-x-6 font-semibold">
-          <li><a href="/" className="hover:text-yellow-400">Home</a></li>
-          <li><a href="/#about" className="hover:text-yellow-400">Who We Are</a></li>
-          <li><a href="/#programs" className="hover:text-yellow-400">Programs</a></li>
-          <li><a href="/#contact" className="hover:text-yellow-400">Contact Us</a></li>
+          <li><Link to="/" className="hover:text-[#F2ECE8] transition duration-300">Home</Link></li>
+          <li><a href="#about" className="hover:text-[#F2ECE8] transition duration-300">Who We Are</a></li>
+          <li><a href="#programs" className="hover:text-[#F2ECE8] transition duration-300">Programs</a></li>
+          <li><a href="#stories" className="hover:text-[#F2ECE8] transition duration-300">Impact</a></li>
+          <li><a href="#contact" className="hover:text-[#F2ECE8] transition duration-300">Contact Us</a></li>
         </ul>
 
-        {/* Social Icons */}
-        <div className="hidden md:flex space-x-3">
-          <a href="https://facebook.com" className="hover:text-yellow-400"><FaFacebookF /></a>
-          <a href="https://twitter.com" className="hover:text-yellow-400"><FaTwitter /></a>
-          <a href="https://instagram.com" className="hover:text-yellow-400"><FaInstagram /></a>
-          <a href="https://wa.me/254726214345" className="hover:text-yellow-400"><FaWhatsapp /></a>
+        <Link
+          to="/donate"
+          className="hidden md:inline-block bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold 
+                     hover:bg-[#F2ECE8] hover:text-[#1D347A] transition duration-300"
+        >
+          Donate Now
+        </Link>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white focus:outline-none">
+            {menuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
+
+        {menuOpen && (
+          <div className="absolute top-full left-0 w-full bg-[#1D347A] flex flex-col items-center py-4 space-y-2 md:hidden z-50">
+            <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8] transition">Home</Link>
+            <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8] transition">Who We Are</a>
+            <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8] transition">Programs</a>
+            <a href="#stories" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8] transition">Impact</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8] transition">Contact Us</a>
+            <Link
+              to="/donate"
+              onClick={() => setMenuOpen(false)}
+              className="bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold 
+                         hover:bg-[#F2ECE8] hover:text-[#1D347A] transition duration-300"
+            >
+              Donate Now
+            </Link>
+          </div>
+        )}
       </nav>
 
-      {/* ✅ Hero Section with Sliding Background */}
+      {/* ✅ Hero */}
       <section className="relative text-white w-full h-[90vh] overflow-hidden pt-16">
         <Slider {...settings} className="h-full">
           {[ncdo5, ncdo4, ncdo7].map((bg, i) => (
             <div key={i} className="h-[90vh] relative">
-              <div
-                className="h-full w-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${bg})` }}
-              >
-                {/* Overlay */}
+              <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
                 <div className="absolute inset-0 bg-black/60"></div>
-
-                {/* Content */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
                   <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">
                     Support Our Mission
                   </h1>
                   <p className="mt-4 text-lg max-w-3xl text-gray-100 drop-shadow-sm">
-                    Your donation helps build resilient communities across Ethiopia, Kenya, and Somalia.
-                    Join us in making a meaningful impact! Every contribution counts.
+                    Be part of the change Whether through volunteering, donations, or partnerships, there are many ways to support community development in Loitokitok. Together, we can create lasting change.
+                    Ready to make a difference? Your donation helps build resilient communities across Kenya.
+                    Every contribution counts!
                   </p>
                 </div>
               </div>
@@ -80,24 +142,49 @@ export default function Donate() {
         </Slider>
       </section>
 
-      {/* ✅ Donation Form Section */}
+      {/* ✅ Donation Form with Flutterwave */}
       <section className="py-20 px-6 bg-[#F2ECE8] text-[#1D347A]">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Make a Donation</h2>
-          <form className="grid grid-cols-1 gap-4">
-            <input type="text" placeholder="Full Name" className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-            <input type="email" placeholder="Email Address" className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-            <input type="number" placeholder="Donation Amount (USD)" className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-            <select className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          <div className="grid grid-cols-1 gap-4">
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="p-3 border rounded-md transition duration-300 hover:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="p-3 border rounded-md transition duration-300 hover:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+            />
+            <input
+              type="number"
+              placeholder="Donation Amount (KES)"
+              className="p-3 border rounded-md transition duration-300 hover:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              value={form.amount}
+              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            />
+            <select
+              className="p-3 border rounded-md transition duration-300 hover:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              value={form.method}
+              onChange={(e) => setForm({ ...form, method: e.target.value })}
+            >
               <option value="">Select Payment Method</option>
-              <option value="card">Credit/Debit Card</option>
-              <option value="paypal">PayPal</option>
               <option value="mpesa">M-Pesa</option>
+              <option value="card">Credit/Debit Card</option>
             </select>
-            <button type="submit" className="bg-yellow-500 text-[#1D347A] px-6 py-3 rounded-md font-bold hover:bg-yellow-600 transition duration-300">
-              Donate Now
-            </button>
-          </form>
+
+            {/* ✅ Flutterwave Donate Button */}
+            <FlutterWaveButton
+              {...fwConfig}
+              className="bg-yellow-500 text-[#1D347A] px-6 py-3 rounded-md font-bold 
+                         hover:bg-yellow-600 hover:scale-105 transition duration-300"
+            />
+          </div>
         </div>
       </section>
 
@@ -106,11 +193,12 @@ export default function Donate() {
         <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-4">
           {/* Logo & About */}
           <div>
-            <img src={ncdologo} alt="NCDO Logo" className="w-28 mb-4" />
+            <img src={ncdolgo} alt="NCDO Logo" className="w-28 mb-4 hover:scale-105 transition duration-300" />
             <p className="text-sm leading-relaxed">
-              Noomayianat Community Development Organization (NCDO) is a non-profit working in Kajiado County, Kenya.
-              <br />
-              <span className="text-yellow-400 font-semibold">Building Resilient Communities for Sustainable Development.</span>
+              Noomayianat Community Development Organization (NCDO) is a non-profit working in Kajiado County, Kenya. <br />
+              <span className="text-yellow-400 font-semibold">
+                Building Resilient Communities for Sustainable Development.
+              </span>
             </p>
           </div>
 
@@ -118,10 +206,10 @@ export default function Donate() {
           <div>
             <h3 className="text-lg font-bold mb-4 text-white">About Us</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#about" className="hover:text-yellow-400">Our Story</a></li>
-              <li><a href="#programs" className="hover:text-yellow-400">Our Programs</a></li>
-              <li><a href="#partners" className="hover:text-yellow-400">Partners</a></li>
-              <li><a href="#careers" className="hover:text-yellow-400">Careers</a></li>
+              <li><a href="#about" className="hover:text-yellow-400 transition">Our Story</a></li>
+              <li><a href="#programs" className="hover:text-yellow-400 transition">Our Programs</a></li>
+              <li><a href="#partners" className="hover:text-yellow-400 transition">Partners</a></li>
+              <li><a href="#careers" className="hover:text-yellow-400 transition">Careers</a></li>
             </ul>
           </div>
 
@@ -129,10 +217,10 @@ export default function Donate() {
           <div>
             <h3 className="text-lg font-bold mb-4 text-white">Support</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#volunteer" className="hover:text-yellow-400">Volunteer</a></li>
-              <li><a href="#donate" className="hover:text-yellow-400">Make a Donation</a></li>
-              <li><a href="#impact" className="hover:text-yellow-400">Impact Stories</a></li>
-              <li><a href="#contact" className="hover:text-yellow-400">Contact Us</a></li>
+              <li><a href="#volunteer" className="hover:text-yellow-400 transition">Volunteer</a></li>
+              <li><a href="#donate" className="hover:text-yellow-400 transition">Make a Donation</a></li>
+              <li><a href="#impact" className="hover:text-yellow-400 transition">Impact Stories</a></li>
+              <li><a href="#contact" className="hover:text-yellow-400 transition">Contact Us</a></li>
             </ul>
           </div>
 
@@ -146,34 +234,33 @@ export default function Donate() {
                 { icon: <FaInstagram />, url: "#" },
                 { icon: <FaWhatsapp />, url: "https://wa.me/254726214345" },
               ].map((social, i) => (
-                <a key={i} href={social.url} target="_blank" rel="noopener noreferrer"
-                   className="bg-white text-[#1D347A] p-3 rounded-full shadow hover:bg-yellow-400 hover:text-[#1D347A] transition">
+                <a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-[#1D347A] p-3 rounded-full shadow 
+                             hover:bg-yellow-400 hover:scale-110 hover:rotate-3 transition duration-300"
+                >
                   {social.icon}
                 </a>
               ))}
             </div>
-            <p className="text-sm mb-3">Want updates? Sign up for our newsletter.</p>
-            <form className="flex flex-col sm:flex-row gap-2">
-              <input type="email" placeholder="Email"
-                     className="px-3 py-2 rounded-md w-full text-black focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-              <button type="submit" className="bg-yellow-500 text-[#1D347A] px-4 py-2 rounded-md hover:bg-yellow-600 transition">
-                Sign Up
-              </button>
-            </form>
+
+           
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm">
           <p>
-            © {new Date().getFullYear()} Noomayianat Community Development Organization.  
-            HQ: <span className="text-yellow-400">Kajiado County, Kimana Town, Kenya.</span>  
-            All rights reserved.
+            © {new Date().getFullYear()} Noomayianat Community Development Organization. HQ:{" "}
+            <span className="text-yellow-400">Kajiado County, Kimana Town, Kenya.</span> All rights reserved.
           </p>
           <div className="mt-2 space-x-4">
-            <a href="#" className="hover:text-yellow-400">Privacy Policy</a> | 
-            <a href="#" className="hover:text-yellow-400">Terms & Conditions</a> | 
-            <a href="#" className="hover:text-yellow-400">Accessibility</a>
+            <a href="#" className="hover:text-yellow-400 transition">Privacy Policy</a> |{" "}
+            <a href="#" className="hover:text-yellow-400 transition">Terms & Conditions</a> |{" "}
+            <a href="#" className="hover:text-yellow-400 transition">Accessibility</a>
           </div>
         </div>
       </footer>

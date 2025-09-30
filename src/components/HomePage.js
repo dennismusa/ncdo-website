@@ -72,60 +72,75 @@ export default function HomePage() {
 
       {/* Navbar */}
 
-     {/* Navbar */}
-<nav className="bg-[#1D347A] shadow-md px-4 sm:px-6 py-4 text-white flex items-center justify-between">
-  {/* Logo */}
-  <div className="flex items-center space-x-3">
-    <img src={ncdolgo} alt="NCDO Logo" className="w-24 h-12 object-contain" />
-  </div>
+{/* Navbar */}
+<nav className="fixed top-0 left-0 w-full bg-[#1D347A] shadow-md px-4 sm:px-6 py-3 text-white z-50">
+  <div className="flex items-center justify-between">
+    
+    {/* Logo + Text */}
+    <div className="flex items-center space-x-2">
+      <img src={ncdolgo} alt="NCDO Logo" className="w-16 h-10 object-contain" />
+      <span className="text-xs sm:text-sm md:text-base font-bold leading-tight">
+        NOOMAYIANAT <br /> Community Development
+      </span>
+    </div>
 
-  {/* Desktop Links */}
-  <ul className="hidden md:flex space-x-6 font-semibold">
-    <li><Link to="/" className="hover:text-[#F2ECE8]">Home</Link></li>
-    <li><a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a></li>
-    <li><a href="#programs" className="hover:text-[#F2ECE8]">Programs</a></li>
-    <li><a href="#contact" className="hover:text-[#F2ECE8]">Contact Us</a></li>
-  </ul>
+    {/* Desktop Links */}
+    <ul className="hidden md:flex space-x-6 font-semibold">
+      <li><Link to="/" className="hover:text-[#F2ECE8]">Home</Link></li>
+      <li><a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a></li>
+      <li><a href="#programs" className="hover:text-[#F2ECE8]">Programs</a></li>
+      <li><a href="#stories" className="hover:text-[#F2ECE8]">Impact</a></li>
+      <li><a href="#contact" className="hover:text-[#F2ECE8]">Contact Us</a></li>
+    </ul>
 
-  {/* Donate Button */}
-  <Link
-    to="/donate"
-    className="hidden md:inline-block bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
-  >
-    Donate Now
-  </Link>
-
-  {/* Mobile Hamburger */}
-  <div className="md:hidden">
-    <button
-      onClick={() => setMenuOpen(!menuOpen)}
-      className="text-white focus:outline-none"
+    {/* Donate Button (Desktop) */}
+    <Link
+      to="/donate"
+      className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
     >
-      {menuOpen ? (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      ) : (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      )}
-    </button>
+      Donate
+    </Link>
+
+    {/* Mobile Hamburger */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="text-white focus:outline-none"
+      >
+        {menuOpen ? (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
+      </button>
+    </div>
   </div>
 
   {/* Mobile Menu */}
   {menuOpen && (
-    <div className="absolute top-full left-0 w-full bg-[#1D347A] flex flex-col items-center py-4 space-y-2 md:hidden z-50">
+    <div className="md:hidden bg-[#1D347A] flex flex-col items-center py-4 space-y-3 mt-2 rounded-lg shadow-lg">
       <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Home</Link>
       <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Who We Are</a>
       <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Programs</a>
+      <a href="#stories" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Impact</a>
       <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Contact Us</a>
-      <Link to="/donate" onClick={() => setMenuOpen(false)} className="bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold hover:bg-[#F2ECE8] hover:text-[#1D347A] transition">
+      <Link
+        to="/donate"
+        onClick={() => setMenuOpen(false)}
+        className="bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
+      >
         Donate Now
       </Link>
     </div>
   )}
 </nav>
+
+
+
 
 
       {/* Hero Section with sliding background */}
@@ -165,28 +180,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Who We Are Section */}
-      <section id="about" className="py-20 px-6 bg-[#F2ECE8] text-[#1D347A]">
-        <div className="max-w-4xl mx-auto text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
-          <p className="text-lg md:text-xl mb-4">
-            NCDO is dedicated to improving the lives of vulnerable communities in  Kenya. 
-            Our mission is to build resilient, self-sufficient communities through sustainable programs in water, sanitation, food security, governance, and peace.
-          </p>
-          <p className="text-lg md:text-xl">
-            With over 24 years of experience, our team collaborates with local partners and stakeholders to ensure impactful, measurable results for communities in need.
-          </p>
+     {/* Who We Are Section */}
+<section id="about" className="py-20 px-6 bg-[#F2ECE8] text-[#1D347A]">
+  <div className="max-w-6xl mx-auto">
+    {/* Heading + Intro */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-wide">
+        Who We Are
+      </h2>
+      <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto text-gray-700">
+        NCDO is dedicated to improving the lives of vulnerable communities in Kenya. 
+        Our mission is to build resilient, self-sufficient communities through sustainable 
+        programs in water, sanitation, food security, governance, and peace.
+      </p>
+      <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-700">
+        With over 24 years of experience, our team collaborates with local partners and 
+        stakeholders to ensure impactful, measurable results for communities in need.
+      </p>
+    </div>
+
+    {/* Mission, Vision, Values */}
+    <div className="grid md:grid-cols-3 gap-10">
+      {/* Mission */}
+      <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+        <div className="flex justify-center mb-4">
+          <span className="w-16 h-16 flex items-center justify-center bg-[#1D347A] text-white rounded-full text-3xl font-bold shadow-lg">
+            🌍
+          </span>
         </div>
-      </section>
+        <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Mission</h3>
+        <p className="text-gray-700 leading-relaxed">
+          To foster sustainable community development through innovative programs 
+          that address local needs and build capacity for long-term growth.
+        </p>
+      </div>
+
+      {/* Vision */}
+      <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+        <div className="flex justify-center mb-4">
+          <span className="w-16 h-16 flex items-center justify-center bg-[#7382AD] text-white rounded-full text-3xl font-bold shadow-lg">
+            👁
+          </span>
+        </div>
+        <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Vision</h3>
+        <p className="text-gray-700 leading-relaxed">
+          A thriving Loitokitok community where every member has access to 
+          opportunities for growth, education, and sustainable livelihoods.
+        </p>
+      </div>
+
+      {/* Values */}
+      <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+        <div className="flex justify-center mb-4">
+          <span className="w-16 h-16 flex items-center justify-center bg-yellow-500 text-white rounded-full text-3xl font-bold shadow-lg">
+            🤝
+          </span>
+        </div>
+        <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Values</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Community collaboration, transparency, sustainability, and empowerment 
+          guide everything we do in service of our neighbors.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* CTA Section */}
       <section id="cta" className="py-20 px-6 text-center" style={{ backgroundColor: "#1D347A" }}>
         <div className="max-w-2xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Join the movement for change! Be a catalyst for transformation.
+            
           </h2>
           <p className="mb-6 text-lg">
-            Volunteer with us to shape a better future together.
+            Volunteer with us to shape a better future together.Ready to make a difference?Contact us to learn more about our programs or get involved
           </p>
           <div className="space-x-4">
             <a
@@ -195,31 +265,27 @@ export default function HomePage() {
             >
               Volunteer Now
             </a>
-            <a
-              href="/donate"
-              className="inline-block bg-[#F2ECE8] text-[#1D347A] px-5 py-2 rounded-md font-bold hover:bg-[#7382AD] hover:text-white transition"
-            >
-              Open Positions
-            </a>
+           
           </div>
         </div>
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-20 px-6 bg-[#F7F7F9]">
+     <section id="programs" className="py-20 px-6 bg-[#F2ECE8]">
   <div className="max-w-7xl mx-auto text-center">
-    <h2 className="text-4xl font-extrabold tracking-wide text-[#1D347A] mb-4">
+    <h2 className="text-4xl font-extrabold tracking-tight text-[#1D347A] mb-4">
       Our Programs
     </h2>
-    <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-      We run impactful initiatives designed to empower communities and create lasting change.
+    <p className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+      Comprehensive initiatives designed to address the diverse needs of our
+      community and create measurable, lasting impact.
     </p>
 
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
       {programs.map((p, i) => (
         <div
           key={i}
-          className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden flex flex-col"
+          className="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 overflow-hidden flex flex-col"
         >
           <img
             src={p.img}
@@ -230,21 +296,15 @@ export default function HomePage() {
             <h3 className="text-xl font-bold text-[#1D347A] mb-3">
               {p.title}
             </h3>
-            <p className="text-gray-700 flex-grow mb-4">{p.desc}</p>
-            
-            <div className="flex justify-between items-center mt-auto">
+            <p className="text-gray-600 flex-grow mb-4">{p.desc}</p>
+
+            <div className="text-left">
               <a
                 href="#"
-                className="text-[#7382AD] font-semibold hover:underline"
+                className="text-[#1D347A] font-medium hover:text-[#7382AD] transition"
               >
                 Learn More →
               </a>
-              <Link
-                to="/donate"
-                className="bg-[#1D347A] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#7382AD] transition"
-              >
-                Donate
-              </Link>
             </div>
           </div>
         </div>
@@ -252,6 +312,106 @@ export default function HomePage() {
     </div>
   </div>
 </section>
+
+
+
+{/* Real Stories Section */}
+<section id="stories" className="py-20 px-6 bg-[#F2ECE8]">
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl font-extrabold text-[#1D347A] mb-4">
+      Real Stories of Transformation
+    </h2>
+    <p className="text-lg text-gray-700 mb-12">
+      Measurable progress and meaningful change in our community
+    </p>
+
+    {/* Education Block */}
+    <div className="mb-20">
+      <div
+        className="relative bg-cover bg-center rounded-2xl shadow-lg overflow-hidden"
+        style={{ backgroundImage: `url(${require("../images/ncdo3.jpg")})` }}
+      >
+        <div className="bg-[#1D347A]/80 p-10 text-white">
+          <h3 className="text-3xl font-bold mb-3">
+            Transforming Lives Through Education
+          </h3>
+          <p className="max-w-3xl mx-auto mb-8">
+            Since 2020, our education support program has provided scholarships
+            to over 200 students, built 3 new classrooms, and established a
+            computer lab that serves 500+ students annually. The graduation rate
+            in our partner schools has increased by 40%.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-8">
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+          <h4 className="text-xl font-bold text-[#1D347A]">
+            🎓 200+ Scholarships Awarded
+          </h4>
+          <p className="text-gray-600 mt-2">
+            Supporting students from primary to university level
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+          <h4 className="text-xl font-bold text-[#1D347A]">
+            📈 40% Increase in Graduation Rates
+          </h4>
+          <p className="text-gray-600 mt-2">
+            Measurable improvement in educational outcomes
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+          <h4 className="text-xl font-bold text-[#1D347A]">🏆 Educational Excellence</h4>
+          <p className="text-gray-600 mt-2">Building brighter futures</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Community Health Block */}
+    <div>
+      <div
+        className="relative bg-cover bg-center rounded-2xl shadow-lg overflow-hidden"
+        style={{ backgroundImage: `url(${require("../images/ncdo3.jpg")})` }}
+      >
+        <div className="bg-[#1D347A]/80 p-10 text-white">
+          <h3 className="text-3xl font-bold mb-3">Improving Community Health</h3>
+          <p className="max-w-3xl mx-auto mb-8">
+            Our mobile health clinics have reached over 2,000 community members,
+            providing essential healthcare services. We've also trained 50
+            community health workers and established 2 permanent health posts in
+            remote areas.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-8">
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+          <h4 className="text-xl font-bold text-[#1D347A]">👩‍⚕️ 2,000+ People Served</h4>
+          <p className="text-gray-600 mt-2">
+            Through mobile clinics and health outreach
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+          <h4 className="text-xl font-bold text-[#1D347A]">💊 50 Health Workers Trained</h4>
+          <p className="text-gray-600 mt-2">
+            Building local healthcare capacity
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+          <h4 className="text-xl font-bold text-[#1D347A]">🏥 Community Health Access</h4>
+          <p className="text-gray-600 mt-2">
+            Establishing permanent health posts in remote areas
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
 
       {/* Partners Section */}
@@ -294,7 +454,7 @@ export default function HomePage() {
     
     <div className="space-y-3 text-gray-700">
       <p><strong>HQ:</strong> Kajiado County,Kimana Town,Kenya</p>
-      <p><strong>Email:</strong> Olemusah@gmail.com</p>
+      <p><strong>Email:</strong> noomayianat@yahoo.com</p>
       <p><strong>Phone:</strong> +254 726 214 345</p>
     </div>
     
@@ -395,22 +555,7 @@ export default function HomePage() {
               </a>
             ))}
           </div>
-          <p className="text-sm mb-3">
-            Want updates? Sign up for our newsletter.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="Email"
-              className="px-3 py-2 rounded-md w-full text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            />
-            <button
-              type="submit"
-              className="bg-yellow-500 text-[#1D347A] px-4 py-2 rounded-md hover:bg-yellow-600 transition"
-            >
-              Sign Up
-            </button>
-          </form>
+                    
         </div>
       </div>
 
