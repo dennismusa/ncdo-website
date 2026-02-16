@@ -90,7 +90,16 @@ export default function HomePage() {
 
         {/* Desktop Links */}
         <ul className="hidden md:flex space-x-6 font-semibold">
-          <li><Link to="/" className="hover:text-[#F2ECE8]">Home</Link></li>
+          <li>
+  <Link
+    to="/"
+    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    className="hover:text-[#F2ECE8]"
+  >
+    Home
+  </Link>
+</li>
+
           <li><a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a></li>
           <li><a href="#programs" className="hover:text-[#F2ECE8]">Programs</a></li>
           <li><a href="#stories" className="hover:text-[#F2ECE8]">Impact</a></li>
@@ -137,7 +146,17 @@ export default function HomePage() {
           >
             ✕
           </button>
-          <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Home</Link>
+          <Link
+  to="/"
+  onClick={() => { 
+    window.scrollTo({ top: 0, behavior: "smooth" }); 
+    setMenuOpen(false); 
+  }}
+  className="hover:text-[#F2ECE8]"
+>
+  Home
+</Link>
+
           <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Who We Are</a>
           <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Programs</a>
           <a href="#stories" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Impact</a>
