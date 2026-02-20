@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import WatchVideo from "./WatchVideo";
@@ -26,37 +27,94 @@ export default function HomePage() {
   // Programs array (all using ncdo7 image)
    const [menuOpen, setMenuOpen] = useState(false);
   const programs = [
-    {
-      title: "Wetlands Restoration and Management",
-      desc: "Engaging communities to restore and sustainably manage wetlands.",
-      img: ncdo5,
-    },
-    {
-      title: "Community Baraza",
-      desc: "Organizing community forums to discuss local environmental issues.",
-      img: baraza,
-    },
-    {
-      title: "Awareness for Wetlands Project",
-      desc: "Raising awareness on the importance of wetlands conservation.",
-      img: awareness,
-    },
-    {
-      title: "Nature Conservation Day",
-      desc: "A day dedicated to promoting nature conservation activities.",
-      img: ncdo7,
-    },
-    {
-      title: "Environmental Education",
-      desc: "Educating local communities and schools on environmental protection.",
-      img: ncdo4,
-    },
-    {
-      title: "Tree Planting Initiatives",
-      desc: "Organizing tree planting drives to enhance green cover.",
-      img: ncdo2,
-    },
-  ];
+  {
+    title: "Wetlands Restoration and Management",
+    img: ncdo5,
+    desc: `We engage local communities in restoring degraded wetlands and implementing 
+    sustainable management practices. Activities include replanting native vegetation, 
+    controlling invasive species, and monitoring wetland health. By preserving these 
+    ecosystems, we improve water quality, enhance biodiversity, and provide sustainable 
+    resources for local livelihoods.`,
+    impact: [
+      "5 major wetlands restored",
+      "Over 2,000 community members engaged",
+      "Improved water quality and habitat for wildlife",
+      "Sustainable wetland management plans established"
+    ]
+  },
+  {
+    title: "Community Baraza",
+    img: baraza,
+    desc: `We organize regular community forums (Barazas) to discuss local environmental 
+    and conservation issues. These forums empower residents to voice concerns, contribute 
+    solutions, and collaborate with local authorities on sustainable development projects. 
+    Barazas foster civic participation and ensure community-led decision-making.`,
+    impact: [
+      "12 community forums held annually",
+      "500+ participants engaged per year",
+      "Local environmental policies influenced",
+      "Strengthened community leadership in conservation"
+    ]
+  },
+  {
+    title: "Awareness for Wetlands Project",
+    img: awareness,
+    desc: `Our awareness campaigns highlight the ecological, economic, and social importance 
+    of wetlands. We use educational workshops, school programs, and public media campaigns 
+    to inform communities about conservation practices, threats to wetlands, and opportunities 
+    for sustainable use. The program aims to instill long-term behavioral change and 
+    community stewardship.`,
+    impact: [
+      "Over 3,000 individuals reached through campaigns",
+      "20 schools engaged in environmental education",
+      "Increased local participation in wetland conservation",
+      "Public understanding of wetlands protection improved"
+    ]
+  },
+  {
+    title: "Nature Conservation Day",
+    img: ncdo7,
+    desc: `An annual event dedicated to promoting nature conservation through hands-on 
+    activities, workshops, and community engagement. Participants take part in clean-up 
+    drives, tree planting, wildlife protection awareness, and educational exhibitions, 
+    fostering a stronger connection with the environment.`,
+    impact: [
+      "500+ participants annually",
+      "Cleanup of 10 km of local natural areas",
+      "50 trees planted during the event",
+      "Enhanced community knowledge on conservation"
+    ]
+  },
+  {
+    title: "Environmental Education",
+    img: ncdo4,
+    desc: `We educate schools and local communities on environmental protection, climate 
+    change, and sustainable resource management. Programs include interactive workshops, 
+    eco-clubs, and teacher training to ensure long-lasting knowledge transfer. Our goal 
+    is to empower youth and adults to become advocates for the environment.`,
+    impact: [
+      "1,000+ students educated annually",
+      "50 teachers trained in environmental education",
+      "Creation of 15 eco-clubs in schools",
+      "Community projects initiated by students and local residents"
+    ]
+  },
+  {
+    title: "Tree Planting Initiatives",
+    img: ncdo2,
+    desc: `We organize large-scale tree planting drives to enhance green cover, improve 
+    air quality, and combat climate change. The program engages schools, youth groups, 
+    and community members in planting native trees while providing education on tree 
+    care and ecosystem benefits.`,
+    impact: [
+      "10,000+ trees planted annually",
+      "300+ volunteers engaged",
+      "Increased community awareness on reforestation",
+      "Improved biodiversity and green spaces in local areas"
+    ]
+  }
+];
+
 
   const partnerLogos = [partner1, partner2, partner3, partner4, partner5];
 
@@ -107,11 +165,11 @@ export default function HomePage() {
         </ul>
 
         {/* Donate Button (Desktop) */}
-        <Link
-          to="/donate"
+////        <Link
+          to="/#"
           className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
         >
-          Donate
+          ///
         </Link>
 
         {/* Mobile Hamburger */}
@@ -305,8 +363,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Programs Section */}
-     <section id="programs" className="py-20 px-6 bg-[#F2ECE8]">
+   {/* Programs Section */}
+<section id="programs" className="py-20 px-6 bg-[#F2ECE8]">
   <div className="max-w-7xl mx-auto text-center">
     <h2 className="text-4xl font-extrabold tracking-tight text-[#1D347A] mb-4">
       Our Programs
@@ -320,33 +378,29 @@ export default function HomePage() {
       {programs.map((p, i) => (
         <div
           key={i}
-          className="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 overflow-hidden flex flex-col"
+          className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden flex flex-col border-t-4 border-[#1D347A]"
         >
-          <img
-            src={p.img}
-            alt={p.title}
-            className="w-full h-52 object-cover"
-          />
+          <div className="relative overflow-hidden">
+            <img
+              src={p.img}
+              alt={p.title}
+              className="w-full h-52 object-cover transition-transform duration-500 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity"></div>
+          </div>
+
           <div className="p-6 flex flex-col flex-grow">
-            <h3 className="text-xl font-bold text-[#1D347A] mb-3">
+            <h3 className="text-xl font-semibold text-[#1D347A] mb-3">
               {p.title}
             </h3>
-            <p className="text-gray-600 flex-grow mb-4">{p.desc}</p>
-
-            <div className="text-left">
-              <a
-                href="#"
-                className="text-[#1D347A] font-medium hover:text-[#7382AD] transition"
-              >
-                Learn More →
-              </a>
-            </div>
+            <p className="text-gray-600 flex-grow leading-relaxed">{p.desc}</p>
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
 
 
 
@@ -490,7 +544,7 @@ export default function HomePage() {
     <div className="space-y-3 text-gray-700">
       <p><strong>HQ:</strong> Kajiado County,Kimana Town,Kenya</p>
       <p><strong>Email:</strong> noomayianat@yahoo.com</p>
-      <p><strong>Phone:</strong> +254 726 214 345</p>
+      <p><strong>Phone:</strong> +254 726 748776</p>
     </div>
     
     {/* Social Media */}
@@ -574,10 +628,10 @@ export default function HomePage() {
           <h3 className="text-lg font-bold mb-4 text-white">Connect With Us</h3>
           <div className="flex space-x-3 mb-4">
             {[
-              { icon: <FaFacebookF />, url: "https://www.facebook.com/p/Noomayianat-Community-Development-Organization-100068936304959/" },
+              { icon: <FaFacebookF />, url: "https://www.facebook.com/p/NCDO-Noomayianat-Community-Development-Organization-61588396622199/" },
               { icon: <FaTwitter />, url: "#" },
               { icon: <FaInstagram />, url: "#" },
-              { icon: <FaWhatsapp />, url: "https://wa.me/254726214345" },
+              { icon: <FaWhatsapp />, url: "https://wa.me/254 726748776" },
             ].map((social, i) => (
               <a
                 key={i}
