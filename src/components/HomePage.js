@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
@@ -7,13 +8,21 @@ import { Link } from "react-router-dom";
 
 // Import images
 import ncdolgo from "../images/ncdolgo.jpg";
+import ncdo1 from "../images/ncdo1.jpg";
 import ncdo3 from "../images/ncdo3.jpg";
 import ncdo4 from "../images/ncdo4.jpg";
 import ncdo5 from "../images/ncdo5.jpeg";
 import ncdo7 from "../images/ncdo7.jpeg";
 import ncdo2 from "../images/ncdo2.jpeg";
 import baraza from "../images/baraza.jpg";
-import awareness from "../images/awareness.jpg";
+import wetland from "../images/wetland.jpg";
+import wetlands3 from "../images/wetland3.jpg";
+import agriculture from "../images/agriculture.jpg";
+import livestockdevelopment from "../images/livestockdevelopment.jpg";
+import ecosystem from "../images/ecosystem.jpg";
+import wateraccess from "../images/wateraccess.jpg";
+import treeplanting from "../images/treeplanting.jpg";
+//import awareness from "../images/awareness.jpg";
 //import wetland from "../images/awareness.jpg";
 
 // Partner images
@@ -27,81 +36,107 @@ export default function HomePage() {
   // Programs array (all using ncdo7 image)
    const [menuOpen, setMenuOpen] = useState(false);
   const programs = [
-  {
-    title: "Wetlands Restoration and Management",
-    img: ncdo5,
-    desc: `We engage local communities in restoring degraded wetlands and implementing 
-    sustainable management practices. Activities include replanting native vegetation, 
-    controlling invasive species, and monitoring wetland health. By preserving these 
-    ecosystems, we improve water quality, enhance biodiversity, and provide sustainable 
-    resources for local livelihoods.`,
+    {
+  title: "Waste Management, Pollution Control & Environmental Health",
+  img: wetland, 
+  desc: `This program focuses reducing environmental pollution and improve public 
+  health by promoting waste segregation, recycling, proper disposal systems, 
+  and community awareness campaigns. 
+
+  We work with local authorities, schools, and community groups to establish 
+  waste collection structures, support recycling enterprises, and promote 
+  environmentally responsible behaviors that contribute to cleaner and 
+  healthier communities.`,
+  impact: [
+    "Community waste segregation systems established",
+    "Reduction in illegal dumping sites",
+    "Increased recycling participation rates",
+    "Improved environmental hygiene in target areas"
+  ]
+},
+{
+    title: "Environmental Conservation & Natural Resource Management",
+    img: wetlands3,
+    desc: `NCDO works to conserve and sustainably manage natural resources, 
+    particularly the Kimana Wetlands — a critical ecosystem supporting wildlife, 
+    livestock, and community livelihoods. Through community mobilization, 
+    awareness campaigns, participatory planning, and ecosystem restoration, 
+    we promote long-term environmental sustainability and biodiversity protection.`,
     impact: [
-      "5 major wetlands restored",
-      "Over 2,000 community members engaged",
-      "Improved water quality and habitat for wildlife",
-      "Sustainable wetland management plans established"
+      "Community-led wetland conservation initiatives implemented",
+      "Improved protection of Kimana Wetlands ecosystem",
+      "Increased local awareness on environmental conservation",
+      "Strengthened natural resource governance structures"
     ]
   },
+
   {
-    title: "Community Baraza",
-    img: baraza,
-    desc: `We organize regular community forums (Barazas) to discuss local environmental 
-    and conservation issues. These forums empower residents to voice concerns, contribute 
-    solutions, and collaborate with local authorities on sustainable development projects. 
-    Barazas foster civic participation and ensure community-led decision-making.`,
+    title: "Climate Change Adaptation & Ecosystem Restoration",
+    img: ecosystem,
+    desc: `In partnership with organizations such as the African Wildlife Foundation 
+    and the Kimana Wetland Association, NCDO promotes climate resilience activities. 
+    These include indigenous tree planting, ecosystem restoration, and community-based 
+    climate adaptation strategies aimed at strengthening environmental stability and 
+    resilience against climate shocks.`,
     impact: [
-      "12 community forums held annually",
-      "500+ participants engaged per year",
-      "Local environmental policies influenced",
-      "Strengthened community leadership in conservation"
+      "Indigenous trees planted across Kimana and neighboring areas",
+      "Improved vegetation cover and soil stability",
+      "Enhanced ecosystem resilience to climate change",
+      "Community capacity strengthened in climate adaptation"
     ]
   },
+
   {
-    title: "Awareness for Wetlands Project",
-    img: awareness,
-    desc: `Our awareness campaigns highlight the ecological, economic, and social importance 
-    of wetlands. We use educational workshops, school programs, and public media campaigns 
-    to inform communities about conservation practices, threats to wetlands, and opportunities 
-    for sustainable use. The program aims to instill long-term behavioral change and 
-    community stewardship.`,
+    title: "Water Access & Sustainable Infrastructure Development",
+    img: wateraccess,
+    desc: `NCDO improves access to clean and safe water through piped water 
+    infrastructure and sustainable water management initiatives. We have 
+    supported water flow regulation around wetlands and implemented piped 
+    water projects benefiting Maasai households. The organization also promotes 
+    drip irrigation technologies to enhance water efficiency in arid areas.`,
     impact: [
-      "Over 3,000 individuals reached through campaigns",
-      "20 schools engaged in environmental education",
-      "Increased local participation in wetland conservation",
-      "Public understanding of wetlands protection improved"
+      "Clean water access expanded to rural households",
+      "Improved water regulation around wetlands",
+      "Drip irrigation systems introduced for water efficiency",
+      "Enhanced agricultural productivity in dry regions"
     ]
   },
+
   {
-    title: "Nature Conservation Day",
-    img: ncdo7,
-    desc: `An annual event dedicated to promoting nature conservation through hands-on 
-    activities, workshops, and community engagement. Participants take part in clean-up 
-    drives, tree planting, wildlife protection awareness, and educational exhibitions, 
-    fostering a stronger connection with the environment.`,
+    title: "Livestock Development & Sustainable Agriculture",
+    img: livestockdevelopment,
+    desc: `To strengthen livelihoods and food security, NCDO supports livestock 
+    production and agricultural development. Activities include livestock vaccination 
+    campaigns, collaboration on livestock infrastructure (such as slaughter facilities), 
+    and farmer training on improved agricultural practices and food security strategies.`,
     impact: [
-      "500+ participants annually",
-      "Cleanup of 10 km of local natural areas",
-      "50 trees planted during the event",
-      "Enhanced community knowledge on conservation"
+      "Improved herd health through vaccination campaigns",
+      "Livestock infrastructure strengthened in target areas",
+      "Increased food security and diversified livelihoods",
+      "Capacity building for pastoralist and farming communities"
     ]
   },
+
   {
-    title: "Environmental Education",
+    title: "Community Engagement, Institutional Strengthening & Energy Solutions",
     img: ncdo4,
-    desc: `We educate schools and local communities on environmental protection, climate 
-    change, and sustainable resource management. Programs include interactive workshops, 
-    eco-clubs, and teacher training to ensure long-lasting knowledge transfer. Our goal 
-    is to empower youth and adults to become advocates for the environment.`,
+    desc: `NCDO actively participates in stakeholder forums and district development 
+    committees, contributing to local policy and resource management decisions. 
+    The organization mobilizes partnerships, secures development funding, and 
+    strengthens community institutions. Through partnerships such as the National 
+    Biogas Program, NCDO has supported household biogas installation to improve 
+    clean energy access, sanitation, and reduce deforestation.`,
     impact: [
-      "1,000+ students educated annually",
-      "50 teachers trained in environmental education",
-      "Creation of 15 eco-clubs in schools",
-      "Community projects initiated by students and local residents"
+      "Stronger community representation in development planning",
+      "Improved institutional and governance capacity",
+      "Successful partnership mobilization for local projects",
+      "Household biogas systems installed for clean energy access"
     ]
+  
   },
   {
     title: "Tree Planting Initiatives",
-    img: ncdo2,
+    img: treeplanting,
     desc: `We organize large-scale tree planting drives to enhance green cover, improve 
     air quality, and combat climate change. The program engages schools, youth groups, 
     and community members in planting native trees while providing education on tree 
@@ -112,7 +147,83 @@ export default function HomePage() {
       "Increased community awareness on reforestation",
       "Improved biodiversity and green spaces in local areas"
     ]
+  },
+  {
+    title: "Environmental Health & Climate Change",
+    img: ncdo1,
+    desc: `This program promotes environmental health and climate resilience 
+    through community-based initiatives that reduce pollution, improve sanitation, 
+    and encourage sustainable environmental practices. We support climate change 
+    awareness, clean energy adoption, and ecosystem protection to safeguard both 
+    public health and natural resources.`,
+    impact: [
+      "Improved community sanitation systems",
+      "Increased climate change awareness",
+      "Reduction in environmental pollution hotspots",
+      "Promotion of sustainable and eco-friendly practices"
+    ]
+  },
+
+  {
+    title: "Water Resource & Waste Management",
+    img: ncdo5,
+    desc: `We work to improve access to clean and safe water while promoting 
+    responsible waste management systems. Our interventions include water 
+    conservation, protection of water sources, rainwater harvesting, waste 
+    segregation, recycling initiatives, and community-led sanitation programs.`,
+    impact: [
+      "Improved access to clean water sources",
+      "Community waste management systems established",
+      "Reduction in illegal dumping and pollution",
+      "Enhanced hygiene and sanitation practices"
+    ]
+  },
+
+  {
+    title: "Agriculture & Agroforestry",
+    img: agriculture,
+    desc: `This program strengthens food security and livelihoods through 
+    sustainable agriculture and agroforestry practices. We train farmers on 
+    climate-smart agriculture, soil conservation, tree planting, and sustainable 
+    land use to improve productivity while protecting the environment.`,
+    impact: [
+      "Increased crop productivity for local farmers",
+      "Adoption of climate-smart farming techniques",
+      "Expansion of agroforestry and tree planting initiatives",
+      "Improved household food security"
+    ]
+  },
+
+  {
+    title: "Women & Youth Empowerment",
+    img: ncdo4,
+    desc: `We empower women and youth through leadership training, entrepreneurship 
+    support, skills development, and civic engagement initiatives. By strengthening 
+    their capacity and economic opportunities, we foster inclusive participation in 
+    community development and decision-making processes.`,
+    impact: [
+      "Women-led enterprises supported",
+      "Youth trained in leadership and entrepreneurship",
+      "Increased economic participation of women and youth",
+      "Stronger community representation and inclusion"
+    ]
+  },
+
+  {
+    title: "Institutional Development",
+    img: ncdo7,
+    desc: `Our institutional development program strengthens local organizations, 
+    community groups, and governance structures. We provide capacity building, 
+    strategic planning support, financial management training, and partnership 
+    development to ensure sustainable and accountable community development.`,
+    impact: [
+      "Improved governance and accountability systems",
+      "Strengthened local community organizations",
+      "Enhanced project management capacity",
+      "Sustainable institutional growth and partnerships"
+    ]
   }
+
 ];
 
 
@@ -128,6 +239,28 @@ export default function HomePage() {
     }, 5000); // switch every 5 seconds
     return () => clearInterval(interval);
   }, [bgImages.length]);
+
+
+  const SimpleSlider = ({ images }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <img
+      src={images[index]}
+      alt=""
+      className="w-full h-52 object-cover"
+    />
+  );
+};
+
 
   return (
     <div className="font-sans">
@@ -283,8 +416,19 @@ export default function HomePage() {
       </h2>
       <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto text-gray-700">
         NCDO is dedicated to improving the lives of vulnerable communities in Kenya. 
-        Our mission is to build resilient, self-sufficient communities through sustainable 
-        programs in water, sanitation, food security, governance, and peace.
+        was formed in the year 2005 by
+some experienced youth profession-
+als to address the issues related to
+environmental degradation, drought miti-
+gation and food security which were largely
+affecting the local communities in Loitoktok
+sub-county. Further it got registered formally
+as a not for profit community based organi-
+zation in the year 2006. Since then, NCDO in
+partnership with Government, donor agen-
+cies, Civil Society Organizations and com-
+munities has been able to implement vari-
+ous projects addressing the different issues.
       </p>
       <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-700">
         With over 24 years of experience, our team collaborates with local partners and 
@@ -303,8 +447,10 @@ export default function HomePage() {
         </div>
         <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Mission</h3>
         <p className="text-gray-700 leading-relaxed">
-          To foster sustainable community development through innovative programs 
-          that address local needs and build capacity for long-term growth.
+          Working with communities in Loitokitok to
+promote sustainable development through
+resource mobilization, training and knowl-
+edge dissemination”
         </p>
       </div>
 
@@ -367,7 +513,7 @@ export default function HomePage() {
 <section id="programs" className="py-20 px-6 bg-[#F2ECE8]">
   <div className="max-w-7xl mx-auto text-center">
     <h2 className="text-4xl font-extrabold tracking-tight text-[#1D347A] mb-4">
-      Our Programs
+      NCDO Components
     </h2>
     <p className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
       Comprehensive initiatives designed to address the diverse needs of our
@@ -543,8 +689,8 @@ export default function HomePage() {
     
     <div className="space-y-3 text-gray-700">
       <p><strong>HQ:</strong> Kajiado County,Kimana Town,Kenya</p>
-      <p><strong>Email:</strong> noomayianat@yahoo.com</p>
-      <p><strong>Phone:</strong> +254 726 748776</p>
+      <p><strong>Email:</strong> johnoitaos713@gmail.com</p>
+      <p><strong>Phone:</strong> +254 726 748776</p>           
     </div>
     
     {/* Social Media */}
