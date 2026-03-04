@@ -22,8 +22,8 @@ import livestockdevelopment from "../images/livestockdevelopment.jpg";
 import ecosystem from "../images/ecosystem.jpg";
 import wateraccess from "../images/wateraccess.jpg";
 import treeplanting from "../images/treeplanting.jpg";
-//import awareness from "../images/awareness.jpg";
-//import wetland from "../images/awareness.jpg";
+import springfencing from "../images/springfencing.jpg";
+import springpollution from "../images/springpollution.jpg";
 
 // Partner images
 import partner1 from "../images/partners1.png";
@@ -37,7 +37,7 @@ export default function HomePage() {
    const [menuOpen, setMenuOpen] = useState(false);
   const programs = [
     {
-  title: "Waste Management, Pollution Control & Environmental Health",
+  title: "Water conservation and management",
   img: wetland, 
   desc: `This program focuses reducing environmental pollution and improve public 
   health by promoting waste segregation, recycling, proper disposal systems, 
@@ -54,6 +54,45 @@ export default function HomePage() {
     "Improved environmental hygiene in target areas"
   ]
 },
+ {
+  title: "spring desilting and spring fencing",
+  img: springfencing, 
+  desc: `This program focuses reducing environmental pollution and improve public 
+  health by promoting waste segregation, recycling, proper disposal systems, 
+  and community awareness campaigns. 
+
+  We work with local authorities, schools, and community groups to establish 
+  waste collection structures, support recycling enterprises, and promote 
+  environmentally responsible behaviors that contribute to cleaner and 
+  healthier communities.`,
+  impact: [
+    "Community waste segregation systems established",
+    "Reduction in illegal dumping sites",
+    "Increased recycling participation rates",
+    "Improved environmental hygiene in target areas"
+  ]
+},
+ {
+  title: "Spring pollution",
+  img: springpollution, 
+  desc: `This program focuses reducing environmental pollution and improve public 
+  health by promoting waste segregation, recycling, proper disposal systems, 
+  and community awareness campaigns. 
+
+  We work with local authorities, schools, and community groups to establish 
+  waste collection structures, support recycling enterprises, and promote 
+  environmentally responsible behaviors that contribute to cleaner and 
+  healthier communities.`,
+  impact: [
+    "Community waste segregation systems established",
+    "Reduction in illegal dumping sites",
+    "Increased recycling participation rates",
+    "Improved environmental hygiene in target areas"
+  ]
+},
+
+
+
 {
     title: "Environmental Conservation & Natural Resource Management",
     img: wetlands3,
@@ -148,21 +187,7 @@ export default function HomePage() {
       "Improved biodiversity and green spaces in local areas"
     ]
   },
-  {
-    title: "Environmental Health & Climate Change",
-    img: ncdo1,
-    desc: `This program promotes environmental health and climate resilience 
-    through community-based initiatives that reduce pollution, improve sanitation, 
-    and encourage sustainable environmental practices. We support climate change 
-    awareness, clean energy adoption, and ecosystem protection to safeguard both 
-    public health and natural resources.`,
-    impact: [
-      "Improved community sanitation systems",
-      "Increased climate change awareness",
-      "Reduction in environmental pollution hotspots",
-      "Promotion of sustainable and eco-friendly practices"
-    ]
-  },
+ 
 
   {
     title: "Water Resource & Waste Management",
@@ -209,22 +234,7 @@ export default function HomePage() {
     ]
   },
 
-  {
-    title: "Institutional Development",
-    img: ncdo7,
-    desc: `Our institutional development program strengthens local organizations, 
-    community groups, and governance structures. We provide capacity building, 
-    strategic planning support, financial management training, and partnership 
-    development to ensure sustainable and accountable community development.`,
-    impact: [
-      "Improved governance and accountability systems",
-      "Strengthened local community organizations",
-      "Enhanced project management capacity",
-      "Sustainable institutional growth and partnerships"
-    ]
-  }
-
-];
+  ];
 
 
   const partnerLogos = [partner1, partner2, partner3, partner4, partner5];
@@ -298,11 +308,11 @@ export default function HomePage() {
         </ul>
 
         {/* Donate Button (Desktop) */}
-////        <Link
-          to="/#"
+        <Link
+          to="/"
           className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
         >
-          ///
+          Donate
         </Link>
 
         {/* Mobile Hamburger */}
@@ -392,16 +402,14 @@ export default function HomePage() {
             <br />
             Building Resilient Communities For Sustainable Development.
           </p>
-          <div className="mt-6 space-x-4 flex">
-            {/* Watch Video Modal */}
-            <WatchVideo />
-            {/* About Us Button */}
+         <div className="mt-8 flex flex-wrap items-center gap-4">
+  <WatchVideo />
             <a
-              href="#about"
-              className="inline-block bg-white text-[#1D347A] px-6 py-3 rounded-md font-semibold hover:bg-[#7382AD] hover:text-white transition duration-300"
-            >
-              About Us
-            </a>
+    href="#about"
+    className="bg-white text-[#1D347A] px-6 py-3 rounded-md font-semibold hover:bg-[#7382AD] hover:text-white transition duration-300"
+  >
+    About Us
+  </a>
           </div>
         </div>
       </section>
@@ -416,24 +424,29 @@ export default function HomePage() {
       </h2>
       <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto text-gray-700">
         NCDO is dedicated to improving the lives of vulnerable communities in Kenya. 
-        was formed in the year 2005 by
-some experienced youth profession-
-als to address the issues related to
-environmental degradation, drought miti-
-gation and food security which were largely
-affecting the local communities in Loitoktok
-sub-county. Further it got registered formally
-as a not for profit community based organi-
-zation in the year 2006. Since then, NCDO in
-partnership with Government, donor agen-
-cies, Civil Society Organizations and com-
-munities has been able to implement vari-
-ous projects addressing the different issues.
+        It was formed in 2005 by experienced youth professionals to address environmental degradation,
+        drought mitigation, and food security challenges affecting Loitoktok sub-county. 
+        Registered formally in 2006, NCDO has implemented various community projects in partnership 
+        with government agencies, donors, and civil society organizations.
       </p>
       <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-700">
-        With over 24 years of experience, our team collaborates with local partners and 
-        stakeholders to ensure impactful, measurable results for communities in need.
+        With over 24 years of experience, our team collaborates with local partners 
+        and stakeholders to ensure impactful, measurable results for communities in need.
       </p>
+    </div>
+
+    {/* Embed YouTube Video */}
+    <div className="flex justify-center mb-16">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/FE0tm4nj1PE?start=268"
+        title="Who We Are Video"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="rounded-lg shadow-lg w-full max-w-3xl"
+      ></iframe>
     </div>
 
     {/* Mission, Vision, Values */}
@@ -447,10 +460,8 @@ ous projects addressing the different issues.
         </div>
         <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Mission</h3>
         <p className="text-gray-700 leading-relaxed">
-          Working with communities in Loitokitok to
-promote sustainable development through
-resource mobilization, training and knowl-
-edge dissemination”
+          Working with communities in Loitokitok to promote sustainable development through
+          resource mobilization, training, and knowledge dissemination.
         </p>
       </div>
 
@@ -463,8 +474,8 @@ edge dissemination”
         </div>
         <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Vision</h3>
         <p className="text-gray-700 leading-relaxed">
-          A thriving Loitokitok community where every member has access to 
-          opportunities for growth, education, and sustainable livelihoods.
+          A thriving Loitokitok community where every member has access to opportunities 
+          for growth, education, and sustainable livelihoods.
         </p>
       </div>
 
@@ -695,10 +706,10 @@ edge dissemination”
     
     {/* Social Media */}
     <div className="flex justify-center space-x-6 mt-6">
-      <a href="#" className="text-[#1D347A] hover:text-yellow-500 text-2xl">🌐</a>
-      <a href="#" className="text-[#1D347A] hover:text-yellow-500 text-2xl">📘</a>
-      <a href="#" className="text-[#1D347A] hover:text-yellow-500 text-2xl">🐦</a>
-      <a href="#" className="text-[#1D347A] hover:text-yellow-500 text-2xl">📸</a>
+      <a href="#programs" className="text-[#1D347A] hover:text-yellow-500 text-2xl">🌐</a>
+      <a href="#programs" className="text-[#1D347A] hover:text-yellow-500 text-2xl">📘</a>
+      <a href="#programs" className="text-[#1D347A] hover:text-yellow-500 text-2xl">🐦</a>
+      <a href="#programs" className="text-[#1D347A] hover:text-yellow-500 text-2xl">📸</a>
     </div>
   </div>
 
@@ -762,7 +773,7 @@ edge dissemination”
         <div>
           <h3 className="text-lg font-bold mb-4 text-white">Support</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="#volunteer" className="hover:text-yellow-400">Volunteer</a></li>
+            <li><a href="#programs" className="hover:text-yellow-400">Volunteer</a></li>
             <li><a href="#donate" className="hover:text-yellow-400">Make a Donation</a></li>
             <li><a href="#impact" className="hover:text-yellow-400">Impact Stories</a></li>
             <li><a href="#contact" className="hover:text-yellow-400">Contact Us</a></li>
