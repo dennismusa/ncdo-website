@@ -275,7 +275,7 @@ const navigate = useNavigate();
   <Link
     to="/"
     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    className="hover:text-[#F2ECE8]"
+   className="hover:text-red-500 transition-all duration-300"
   >
     Home
   </Link>
@@ -290,67 +290,137 @@ const navigate = useNavigate();
         {/* Donate Button (Desktop) */}
         <Link
           to="/Donate"
-          className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
+          className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-red-600 hover:text-white transition-all duration-300"
         >
           Donate
         </Link>
 
         {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white focus:outline-none"
-          >
-            {menuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </div>
+       {/* Mobile Hamburger */}
+<div className="md:hidden">
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="relative z-[60] w-10 h-10 flex flex-col justify-center items-center"
+  >
+    <span
+      className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+        menuOpen ? "rotate-45 translate-y-1.5" : ""
+      }`}
+    />
+    <span
+      className={`w-6 h-0.5 bg-white my-1 transition-all duration-300 ${
+        menuOpen ? "opacity-0" : ""
+      }`}
+    />
+    <span
+      className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+        menuOpen ? "-rotate-45 -translate-y-1.5" : ""
+      }`}
+    />
+  </button>
+</div>
 
-      {/* Mobile Drawer Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#1D347A] shadow-lg transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
-      >
-        <div className="flex flex-col items-start p-6 space-y-4 font-semibold">
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="self-end text-white focus:outline-none"
-          >
-            ✕
-          </button>
-          <Link
-  to="/"
-  onClick={() => { 
-    window.scrollTo({ top: 0, behavior: "smooth" }); 
-    setMenuOpen(false); 
-  }}
-  className="hover:text-[#F2ECE8]"
+{/* Mobile Menu */}
+<div
+  className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ${
+    menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+  }`}
 >
-  Home
-</Link>
+  {/* Backdrop */}
+  <div
+    className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+    onClick={() => setMenuOpen(false)}
+  />
 
-          <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Who We Are</a>
-          <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Programs</a>
-          <a href="#stories" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Impact</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-[#F2ECE8]">Contact Us</a>
-          <Link
-            to="/donate"
-            onClick={() => setMenuOpen(false)}
-            className="bg-[#7382AD] text-white px-4 py-2 rounded-md font-bold hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
-          >
-            Donate Now
-          </Link>
+  {/* Drawer */}
+  <div
+    className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-[#1D347A] shadow-2xl transition-transform duration-500 ${
+      menuOpen ? "translate-x-0" : "translate-x-full"
+    }`}
+  >
+    {/* Header */}
+    <div className="flex items-center justify-between p-5 border-b border-white/10">
+      <div className="flex items-center gap-3">
+        <img
+          src={ncdlgo}
+          alt="NCDO Logo"
+          className="w-12 h-12 object-contain"
+        />
+        <div>
+          <h3 className="font-bold text-sm">NOOMAYIANAT</h3>
+          <p className="text-xs text-gray-300">Community Development</p>
         </div>
       </div>
+
+      <button
+        onClick={() => setMenuOpen(false)}
+        className="text-2xl text-white hover:text-red-500 transition-colors duration-300"
+      >
+        ×
+      </button>
+    </div>
+
+    {/* Navigation */}
+    <div className="flex flex-col p-6">
+      <Link
+        to="/"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setMenuOpen(false);
+        }}
+        className="py-4 text-lg border-b border-white/10 hover:text-red-500 hover:translate-x-1 transition-all duration-300"
+      >
+        Home
+      </Link>
+
+      <a
+        href="#about"
+        onClick={() => setMenuOpen(false)}
+        className="py-4 text-lg border-b border-white/10 hover:text-red-500 hover:translate-x-1 transition-all duration-300"
+      >
+        Who We Are
+      </a>
+
+      <a
+        href="#programs"
+        onClick={() => setMenuOpen(false)}
+        className="py-4 text-lg border-b border-white/10 hover:text-red-500 hover:translate-x-1 transition-all duration-300"
+      >
+        Programs
+      </a>
+
+      <a
+        href="#stories"
+        onClick={() => setMenuOpen(false)}
+        className="py-4 text-lg border-b border-white/10 hover:text-red-500 hover:translate-x-1 transition-all duration-300"
+      >
+        Impact
+      </a>
+
+      <a
+        href="#contact"
+        onClick={() => setMenuOpen(false)}
+        className="py-4 text-lg border-b border-white/10 hover:text-red-500 hover:translate-x-1 transition-all duration-300"
+      >
+        Contact Us
+      </a>
+
+      <Link
+        to="/donate"
+        onClick={() => setMenuOpen(false)}
+        className="mt-8 bg-[#7382AD] text-white text-center py-4 rounded-xl font-bold hover:bg-red-600 hover:text-white hover:scale-105 transition-all duration-300"
+      >
+        Donate Now
+      </Link>
+    </div>
+
+    {/* Footer */}
+    <div className="absolute bottom-0 left-0 right-0 p-5 border-t border-white/10 text-center text-xs text-gray-300">
+      Empowering Communities Through Sustainable Development
+    </div>
+  </div>
+</div>
+</div>
     </nav>
 
 
@@ -363,37 +433,31 @@ const navigate = useNavigate();
       key={i}
       src={img}
       alt="hero slide"
-
       initial={{ opacity: 0, scale: 1.05 }}
       animate={{
         opacity: i === currentIndex ? 1 : 0,
         scale: i === currentIndex ? 1 : 1.05,
       }}
       transition={{ duration: 1.2, ease: "easeInOut" }}
-
       className="absolute inset-0 w-full h-full object-cover"
     />
   ))}
 
   {/* ================= OVERLAYS ================= */}
-
-  {/* dark cinematic overlay */}
   <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-
-  {/* soft green/blue brand glow */}
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(29,52,122,0.25),transparent_60%)]" />
 
   {/* ================= CONTENT ================= */}
   <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
 
-    <div className="max-w-3xl text-left">
+    <div className="max-w-3xl text-left pt-16 sm:pt-0">
 
       {/* BADGE */}
       <motion.span
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="inline-block bg-white/10 text-white px-5 py-2 rounded-full text-sm font-semibold backdrop-blur-md border border-white/20"
+        className="inline-block bg-white/10 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-md border border-white/20"
       >
         🌍 Non-Profit Organization • Kajiado County, Kenya
       </motion.span>
@@ -404,7 +468,7 @@ const navigate = useNavigate();
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white"
+        className="mt-5 text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white"
       >
         Noomayianat Community
         <br />
@@ -419,7 +483,7 @@ const navigate = useNavigate();
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="mt-6 text-base md:text-lg text-gray-200 leading-relaxed max-w-2xl"
+        className="mt-4 text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed max-w-2xl"
       >
         Empowering communities in Kajiado County through sustainable development,
         climate resilience, education, water access, and livelihood transformation.
@@ -430,47 +494,60 @@ const navigate = useNavigate();
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1 }}
-        className="mt-8 flex flex-col sm:flex-row gap-4"
+        className="mt-8 flex flex-wrap items-center gap-3"
       >
-
         <Link
-  to="/watch-video"
-  className="bg-white/10 hover:bg-white/20 text-white px-7 py-3 rounded-full
-             font-semibold transition backdrop-blur-md border border-white/20 inline-block"
->
-  🎥 Watch Our Videos
-</Link>
+          to="/watch-video"
+          className="
+            bg-white/10 hover:bg-white/20
+            text-white
+            px-4 sm:px-6
+            py-2.5 sm:py-3
+            rounded-full
+            text-sm sm:text-base
+            font-medium
+            backdrop-blur-md
+            border border-white/20
+            transition-all duration-300
+            hover:scale-105
+            whitespace-nowrap
+          "
+        >
+          🎥 Watch Videos
+        </Link>
+
         <a
           href="#contact"
-          className="border-2 border-white text-white px-7 py-3 rounded-full
-                     hover:bg-white hover:text-black transition text-center"
+          className="
+            border border-white/70
+            text-white
+            px-4 sm:px-6
+            py-2.5 sm:py-3
+            rounded-full
+            text-sm sm:text-base
+            font-medium
+            transition-all duration-300
+            hover:bg-white
+            hover:text-black
+            hover:scale-105
+            whitespace-nowrap
+          "
         >
           Contact Us
         </a>
-
-        <a
-          href="#programs"
-          className="bg-[#1D347A] hover:bg-[#152a5e] text-white px-7 py-3 rounded-full
-                     font-semibold transition text-center"
-        >
-          Explore Programs
-        </a>
-
       </motion.div>
     </div>
   </div>
 
   {/* ================= SCROLL INDICATOR ================= */}
-  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/70 animate-bounce text-sm">
+  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 animate-bounce text-xs sm:text-sm">
     ↓ Scroll Down
   </div>
 
   {/* ================= VIDEO MODAL ================= */}
   {videoOpen && (
     <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-
       <div className="relative w-[92%] md:w-[65%] aspect-video rounded-xl overflow-hidden shadow-2xl">
-
         <button
           onClick={() => setVideoOpen(false)}
           className="absolute top-3 right-3 bg-white text-black px-3 py-1 rounded z-10"
