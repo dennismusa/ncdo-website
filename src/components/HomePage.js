@@ -5,9 +5,12 @@ import React, { useEffect, useState } from "react";
 import WatchVideo from "./WatchVideo";
 import { FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
+//import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 // Import images
-import ncdolgo from "../images/ncdolgo.jpg";
+import ncdlgo from "../images/ncdlgo.png";
 import ncdo1 from "../images/ncdo1.jpg";
 import ncdo3 from "../images/ncdo3.jpg";
 import ncdo4 from "../images/ncdo4.jpg";
@@ -26,11 +29,15 @@ import springfencing from "../images/springfencing.jpg";
 import springpollution from "../images/springpollution.jpg";
 
 // Partner images
-import partner1 from "../images/partners1.png";
-import partner2 from "../images/partner2.jpg";
-import partner3 from "../images/partner3.png";
-import partner4 from "../images/partner4.png";
-import partner5 from "../images/partner5.png";
+import partner11 from "../images/partner11.png";
+import partner12 from "../images/partner12.png";
+import partner13 from "../images/partner13.png";
+import partner14 from "../images/partner14.png";
+import partner15 from "../images/partner15.png";
+import partner16 from "../images/partner16.png";
+import partner17 from "../images/partner17.png";
+import partner18 from "../images/partner18.png";
+import partner19 from "../images/partner19.png";
 
 export default function HomePage() {
   // Programs array (all using ncdo7 image)
@@ -93,21 +100,6 @@ export default function HomePage() {
 
 
 
-{
-    title: "Environmental Conservation & Natural Resource Management",
-    img: wetlands3,
-    desc: `NCDO works to conserve and sustainably manage natural resources, 
-    particularly the Kimana Wetlands — a critical ecosystem supporting wildlife, 
-    livestock, and community livelihoods. Through community mobilization, 
-    awareness campaigns, participatory planning, and ecosystem restoration, 
-    we promote long-term environmental sustainability and biodiversity protection.`,
-    impact: [
-      "Community-led wetland conservation initiatives implemented",
-      "Improved protection of Kimana Wetlands ecosystem",
-      "Increased local awareness on environmental conservation",
-      "Strengthened natural resource governance structures"
-    ]
-  },
 
   {
     title: "Climate Change Adaptation & Ecosystem Restoration",
@@ -219,25 +211,13 @@ export default function HomePage() {
     ]
   },
 
-  {
-    title: "Women & Youth Empowerment",
-    img: ncdo4,
-    desc: `We empower women and youth through leadership training, entrepreneurship 
-    support, skills development, and civic engagement initiatives. By strengthening 
-    their capacity and economic opportunities, we foster inclusive participation in 
-    community development and decision-making processes.`,
-    impact: [
-      "Women-led enterprises supported",
-      "Youth trained in leadership and entrepreneurship",
-      "Increased economic participation of women and youth",
-      "Stronger community representation and inclusion"
-    ]
-  },
+  
 
   ];
 
-
-  const partnerLogos = [partner1, partner2, partner3, partner4, partner5];
+const [videoOpen, setVideoOpen] = useState(false);
+const navigate = useNavigate();
+  const partnerLogos = [partner11, partner12, partner13, partner14, partner15, partner16, partner17, partner18, partner19];
 
   // 🔹 Background slideshow setup
   const bgImages = [ncdo3, ncdo4, ncdo2, baraza];
@@ -283,7 +263,7 @@ export default function HomePage() {
       <div className="flex items-center justify-between">
         {/* Logo + Text */}
         <div className="flex items-center space-x-2">
-          <img src={ncdolgo} alt="NCDO Logo" className="w-16 h-10 object-contain" />
+          <img src={ncdlgo} alt="NCDO Logo" className="w-16 h-10 object-contain" />
           <span className="text-xs sm:text-sm md:text-base font-bold leading-tight">
             NOOMAYIANAT <br /> Community Development
           </span>
@@ -309,7 +289,7 @@ export default function HomePage() {
 
         {/* Donate Button (Desktop) */}
         <Link
-          to="/"
+          to="/Donate"
           className="hidden md:inline-block bg-[#7382AD] text-white px-3 py-1.5 rounded-md font-bold text-sm hover:bg-[#F2ECE8] hover:text-[#1D347A] transition"
         >
           Donate
@@ -374,154 +354,259 @@ export default function HomePage() {
     </nav>
 
 
-
-
-
-
-
       {/* Hero Section with sliding background */}
-      <section
-        id="home"
-        className="relative bg-cover bg-center text-white py-32 px-6 md:py-48 transition-all duration-1000"
-        style={{
-          backgroundImage: `url(${bgImages[currentIndex]})`,
-          backgroundColor: "#C7B7B3",
-        }}
-      >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+<section className="relative min-h-[80vh] max-h-[800px] flex items-center overflow-hidden">
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-3xl md:mx-0 text-left">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-            Noomayianat Community Development Organization
-          </h1>
-          <p className="mt-4 text-lg text-gray-100 drop-shadow-sm">
-            NCDO - Noomayianat Community Development Organization is a community
-            based and non-profit organization working in Kajiado County, Kenya.
-            <br />
-            Building Resilient Communities For Sustainable Development.
-          </p>
-         <div className="mt-8 flex flex-wrap items-center gap-4">
-  <WatchVideo />
-            <a
-    href="#about"
-    className="bg-white text-[#1D347A] px-6 py-3 rounded-md font-semibold hover:bg-[#7382AD] hover:text-white transition duration-300"
-  >
-    About Us
-  </a>
-          </div>
-        </div>
-      </section>
+  {/* ================= SLIDES ================= */}
+  {bgImages.map((img, i) => (
+    <motion.img
+      key={i}
+      src={img}
+      alt="hero slide"
+
+      initial={{ opacity: 0, scale: 1.05 }}
+      animate={{
+        opacity: i === currentIndex ? 1 : 0,
+        scale: i === currentIndex ? 1 : 1.05,
+      }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  ))}
+
+  {/* ================= OVERLAYS ================= */}
+
+  {/* dark cinematic overlay */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
+
+  {/* soft green/blue brand glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(29,52,122,0.25),transparent_60%)]" />
+
+  {/* ================= CONTENT ================= */}
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div className="max-w-3xl text-left">
+
+      {/* BADGE */}
+      <motion.span
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="inline-block bg-white/10 text-white px-5 py-2 rounded-full text-sm font-semibold backdrop-blur-md border border-white/20"
+      >
+        🌍 Non-Profit Organization • Kajiado County, Kenya
+      </motion.span>
+
+      {/* TITLE */}
+      <motion.h1
+        key={currentIndex}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white"
+      >
+        Noomayianat Community
+        <br />
+        <span className="text-[#7382AD]">
+          Development Organization
+        </span>
+      </motion.h1>
+
+      {/* DESCRIPTION */}
+      <motion.p
+        key={`desc-${currentIndex}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="mt-6 text-base md:text-lg text-gray-200 leading-relaxed max-w-2xl"
+      >
+        Empowering communities in Kajiado County through sustainable development,
+        climate resilience, education, water access, and livelihood transformation.
+      </motion.p>
+
+      {/* BUTTONS */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.1 }}
+        className="mt-8 flex flex-col sm:flex-row gap-4"
+      >
+
+        <Link
+  to="/watch-video"
+  className="bg-white/10 hover:bg-white/20 text-white px-7 py-3 rounded-full
+             font-semibold transition backdrop-blur-md border border-white/20 inline-block"
+>
+  🎥 Watch Our Videos
+</Link>
+        <a
+          href="#contact"
+          className="border-2 border-white text-white px-7 py-3 rounded-full
+                     hover:bg-white hover:text-black transition text-center"
+        >
+          Contact Us
+        </a>
+
+        <a
+          href="#programs"
+          className="bg-[#1D347A] hover:bg-[#152a5e] text-white px-7 py-3 rounded-full
+                     font-semibold transition text-center"
+        >
+          Explore Programs
+        </a>
+
+      </motion.div>
+    </div>
+  </div>
+
+  {/* ================= SCROLL INDICATOR ================= */}
+  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/70 animate-bounce text-sm">
+    ↓ Scroll Down
+  </div>
+
+  {/* ================= VIDEO MODAL ================= */}
+  {videoOpen && (
+    <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+
+      <div className="relative w-[92%] md:w-[65%] aspect-video rounded-xl overflow-hidden shadow-2xl">
+
+        <button
+          onClick={() => setVideoOpen(false)}
+          className="absolute top-3 right-3 bg-white text-black px-3 py-1 rounded z-10"
+        >
+          ✕
+        </button>
+
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="NCDO Video"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  )}
+</section>
+
 
      {/* Who We Are Section */}
 <section id="about" className="py-20 px-6 bg-[#F2ECE8] text-[#1D347A]">
-  <div className="max-w-6xl mx-auto">
-    {/* Heading + Intro */}
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-wide">
-        Who We Are
-      </h2>
-      <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto text-gray-700">
-        NCDO is dedicated to improving the lives of vulnerable communities in Kenya. 
-        It was formed in 2005 by experienced youth professionals to address environmental degradation,
-        drought mitigation, and food security challenges affecting Loitoktok sub-county. 
-        Registered formally in 2006, NCDO has implemented various community projects in partnership 
-        with government agencies, donors, and civil society organizations.
-      </p>
-      <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-700">
-        With over 24 years of experience, our team collaborates with local partners 
-        and stakeholders to ensure impactful, measurable results for communities in need.
-      </p>
-    </div>
+  <div className="max-w-7xl mx-auto">
 
-    {/* Embed YouTube Video */}
-    <div className="flex justify-center mb-16">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/FE0tm4nj1PE?start=268"
-        title="Who We Are Video"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="rounded-lg shadow-lg w-full max-w-3xl"
-      ></iframe>
-    </div>
+    {/* About Top Section */}
+    <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
 
-    {/* Mission, Vision, Values */}
-    <div className="grid md:grid-cols-3 gap-10">
-      {/* Mission */}
-      <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 text-center">
-        <div className="flex justify-center mb-4">
-          <span className="w-16 h-16 flex items-center justify-center bg-[#1D347A] text-white rounded-full text-3xl font-bold shadow-lg">
-            🌍
-          </span>
+      {/* Left Image */}
+      <div className="relative">
+        <img
+          src={wetland}
+          alt="Wetland Conservation"
+          className="w-full h-[450px] object-cover rounded-3xl shadow-2xl"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl"></div>
+
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-bold">Empowering Communities</h3>
+          <p className="text-sm opacity-90">
+            Building sustainable livelihoods through community-driven initiatives.
+          </p>
         </div>
-        <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Mission</h3>
+      </div>
+
+      {/* Right Content */}
+      <div>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+          Who We Are
+        </h2>
+
+        <div className="w-24 h-1 bg-[#7382AD] rounded-full mb-8"></div>
+
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          NCDO is dedicated to improving the lives of vulnerable communities
+          in Kenya. Formed in 2005 by experienced youth professionals, the
+          organization was established to address environmental degradation,
+          drought mitigation, and food security challenges affecting
+          Loitokitok Sub-County.
+        </p>
+
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          Officially registered in 2006, NCDO has successfully implemented
+          numerous community development initiatives in partnership with
+          government institutions, donors, and civil society organizations.
+        </p>
+
+        <p className="text-lg text-gray-700 leading-relaxed">
+          With over 24 years of experience, our team collaborates closely with
+          local communities and stakeholders to deliver sustainable,
+          measurable, and impactful solutions.
+        </p>
+      </div>
+
+    </div>
+
+    {/* Mission Vision Values */}
+    <div className="grid md:grid-cols-3 gap-8">
+
+      {/* Mission */}
+      <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2 text-center">
+        <div className="w-20 h-20 mx-auto mb-6 bg-[#1D347A] rounded-full flex items-center justify-center text-4xl text-white">
+          🌍
+        </div>
+
+        <h3 className="text-2xl font-bold mb-4">
+          Our Mission
+        </h3>
+
         <p className="text-gray-700 leading-relaxed">
-          Working with communities in Loitokitok to promote sustainable development through
-          resource mobilization, training, and knowledge dissemination.
+          Working with communities in Loitokitok to promote sustainable
+          development through resource mobilization, training, and knowledge
+          dissemination.
         </p>
       </div>
 
       {/* Vision */}
-      <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 text-center">
-        <div className="flex justify-center mb-4">
-          <span className="w-16 h-16 flex items-center justify-center bg-[#7382AD] text-white rounded-full text-3xl font-bold shadow-lg">
-            👁
-          </span>
+      <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2 text-center">
+        <div className="w-20 h-20 mx-auto mb-6 bg-[#7382AD] rounded-full flex items-center justify-center text-4xl text-white">
+          👁
         </div>
-        <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Vision</h3>
+
+        <h3 className="text-2xl font-bold mb-4">
+          Our Vision
+        </h3>
+
         <p className="text-gray-700 leading-relaxed">
-          A thriving Loitokitok community where every member has access to opportunities 
-          for growth, education, and sustainable livelihoods.
+          A thriving Loitokitok community where every member has access to
+          opportunities for growth, education, and sustainable livelihoods.
         </p>
       </div>
 
       {/* Values */}
-      <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 text-center">
-        <div className="flex justify-center mb-4">
-          <span className="w-16 h-16 flex items-center justify-center bg-yellow-500 text-white rounded-full text-3xl font-bold shadow-lg">
-            🤝
-          </span>
+      <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2 text-center">
+        <div className="w-20 h-20 mx-auto mb-6 bg-yellow-500 rounded-full flex items-center justify-center text-4xl text-white">
+          🤝
         </div>
-        <h3 className="text-2xl font-bold mb-3 text-[#1D347A]">Our Values</h3>
+
+        <h3 className="text-2xl font-bold mb-4">
+          Our Values
+        </h3>
+
         <p className="text-gray-700 leading-relaxed">
-          Community collaboration, transparency, sustainability, and empowerment 
-          guide everything we do in service of our neighbors.
+          Community collaboration, transparency, sustainability, and
+          empowerment guide everything we do in service of our communities.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
 
-
-      {/* CTA Section */}
-      <section id="cta" className="py-20 px-6 text-center" style={{ backgroundColor: "#1D347A" }}>
-        <div className="max-w-2xl mx-auto text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Join the movement for change! Be a catalyst for transformation.
-            
-          </h2>
-          <p className="mb-6 text-lg">
-            Volunteer with us to shape a better future together.Ready to make a difference?Contact us to learn more about our programs or get involved
-          </p>
-          <div className="space-x-4">
-            <a
-              href="/donate"
-              className="inline-block bg-[#1D347A] text-white px-5 py-2 rounded-md font-bold hover:bg-[#C7B7B3] transition"
-            >
-              Volunteer Now
-            </a>
-           
-          </div>
-        </div>
-      </section>
+     
 
    {/* Programs Section */}
-<section id="programs" className="py-20 px-6 bg-[#F2ECE8]">
+<section id="programs" className="py-20 px-6 bg-[#e9eaec]">
   <div className="max-w-7xl mx-auto text-center">
     <h2 className="text-4xl font-extrabold tracking-tight text-[#1D347A] mb-4">
       NCDO Components
@@ -558,100 +643,215 @@ export default function HomePage() {
   </div>
 </section>
 
+ {/* CTA Section */}
+<section
+  id="cta"
+  className="relative py-24 px-6 overflow-hidden"
+>
+  {/* Background */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#1D347A] via-[#2A4BA8] to-[#1D347A]"></div>
 
+  {/* Decorative circles */}
+  <div className="absolute top-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
+
+  <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
+
+    {/* Badge */}
+    <span className="inline-block px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-sm font-semibold mb-6">
+      🌍 Together We Can Make a Difference
+    </span>
+
+    {/* Heading */}
+    <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+      Join the Movement for
+      <span className="block text-yellow-400">
+        Sustainable Community Change
+      </span>
+    </h2>
+
+    {/* Description */}
+    <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
+      Become part of a growing network of volunteers, partners, and supporters
+      working to improve livelihoods, protect the environment, and empower
+      communities across Kajiado County.
+    </p>
+
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+      <a
+        href="#contact"
+        className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-8 py-4 rounded-full shadow-xl transition duration-300"
+      >
+        🤝 Volunteer With Us
+      </a>
+
+      <a
+        href="/donate"
+        className="border-2 border-white text-white hover:bg-white hover:text-[#1D347A] font-bold px-8 py-4 rounded-full transition duration-300"
+      >
+        ❤️ Support Our Mission
+      </a>
+
+    </div>
+
+    {/* Small trust text */}
+    <p className="mt-8 text-sm text-gray-300">
+      Empowering communities through environmental conservation,
+      water access, climate resilience, and sustainable livelihoods.
+    </p>
+
+  </div>
+</section>
 
 
 {/* Real Stories Section */}
-<section id="stories" className="py-20 px-6 bg-[#F2ECE8]">
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-4xl font-extrabold text-[#1D347A] mb-4">
-      Real Stories of Transformation
-    </h2>
-    <p className="text-lg text-gray-700 mb-12">
-      Measurable progress and meaningful change in our community
-    </p>
+<section id="stories" className="py-24 px-6 bg-[#EEF4FF]">
+  <div className="max-w-7xl mx-auto">
 
-    {/* Education Block */}
+    {/* Section Header */}
+    <div className="text-center mb-16">
+      <span className="inline-block px-4 py-2 bg-[#1D347A]/10 text-[#1D347A] rounded-full text-sm font-semibold mb-4">
+        Impact Stories
+      </span>
+
+      <h2 className="text-4xl md:text-5xl font-extrabold text-[#1D347A] mb-4">
+        Real Stories of Transformation
+      </h2>
+
+      <div className="w-24 h-1 bg-[#7382AD] mx-auto rounded-full mb-6"></div>
+
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        Discover how our programs are creating lasting change through education,
+        healthcare, and community empowerment across Loitokitok and beyond.
+      </p>
+    </div>
+
+    {/* Education Story */}
     <div className="mb-20">
       <div
-        className="relative bg-cover bg-center rounded-2xl shadow-lg overflow-hidden"
-        style={{ backgroundImage: `url(${require("../images/ncdo3.jpg")})` }}
+        className="relative rounded-3xl overflow-hidden shadow-2xl"
+        style={{
+          backgroundImage: `url(${require("../images/ncdo3.jpg")})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
-        <div className="bg-[#1D347A]/80 p-10 text-white">
-          <h3 className="text-3xl font-bold mb-3">
+        <div className="bg-gradient-to-r from-[#1D347A]/90 to-[#1D347A]/75 p-12 text-white">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
             Transforming Lives Through Education
           </h3>
-          <p className="max-w-3xl mx-auto mb-8">
+
+          <p className="max-w-3xl leading-relaxed text-lg">
             Since 2020, our education support program has provided scholarships
-            to over 200 students, built 3 new classrooms, and established a
-            computer lab that serves 500+ students annually. The graduation rate
-            in our partner schools has increased by 40%.
+            to over 200 students, built new classrooms, and established a
+            computer lab serving hundreds of learners annually.
           </p>
         </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-          <h4 className="text-xl font-bold text-[#1D347A]">
-            🎓 200+ Scholarships Awarded
+        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
+          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
+            🎓 200+
           </h4>
+          <p className="font-semibold text-gray-800">
+            Scholarships Awarded
+          </p>
           <p className="text-gray-600 mt-2">
-            Supporting students from primary to university level
+            Supporting students from primary to university level.
           </p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-          <h4 className="text-xl font-bold text-[#1D347A]">
-            📈 40% Increase in Graduation Rates
+
+        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
+          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
+            📈 40%
           </h4>
+          <p className="font-semibold text-gray-800">
+            Increase in Graduation Rates
+          </p>
           <p className="text-gray-600 mt-2">
-            Measurable improvement in educational outcomes
+            Measurable improvements in educational outcomes.
           </p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-          <h4 className="text-xl font-bold text-[#1D347A]">🏆 Educational Excellence</h4>
-          <p className="text-gray-600 mt-2">Building brighter futures</p>
+
+        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
+          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
+            🏆 Excellence
+          </h4>
+          <p className="font-semibold text-gray-800">
+            Educational Achievement
+          </p>
+          <p className="text-gray-600 mt-2">
+            Building brighter futures through quality education.
+          </p>
         </div>
       </div>
     </div>
 
-    {/* Community Health Block */}
+    {/* Health Story */}
     <div>
       <div
-        className="relative bg-cover bg-center rounded-2xl shadow-lg overflow-hidden"
-        style={{ backgroundImage: `url(${require("../images/ncdo3.jpg")})` }}
+        className="relative rounded-3xl overflow-hidden shadow-2xl"
+        style={{
+          backgroundImage: `url(${require("../images/ncdo3.jpg")})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
-        <div className="bg-[#1D347A]/80 p-10 text-white">
-          <h3 className="text-3xl font-bold mb-3">Improving Community Health</h3>
-          <p className="max-w-3xl mx-auto mb-8">
-            Our mobile health clinics have reached over 2,000 community members,
-            providing essential healthcare services. We've also trained 50
-            community health workers and established 2 permanent health posts in
+        <div className="bg-gradient-to-r from-[#7382AD]/90 to-[#7382AD]/75 p-12 text-white">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            Improving Community Health
+          </h3>
+
+          <p className="max-w-3xl leading-relaxed text-lg">
+            Mobile health clinics have reached thousands of community members,
+            trained local health workers, and expanded healthcare access in
             remote areas.
           </p>
         </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-          <h4 className="text-xl font-bold text-[#1D347A]">👩‍⚕️ 2,000+ People Served</h4>
+        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
+          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
+            👩‍⚕️ 2,000+
+          </h4>
+          <p className="font-semibold text-gray-800">
+            People Served
+          </p>
           <p className="text-gray-600 mt-2">
-            Through mobile clinics and health outreach
+            Through outreach and mobile healthcare services.
           </p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-          <h4 className="text-xl font-bold text-[#1D347A]">💊 50 Health Workers Trained</h4>
+
+        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
+          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
+            💊 50
+          </h4>
+          <p className="font-semibold text-gray-800">
+            Health Workers Trained
+          </p>
           <p className="text-gray-600 mt-2">
-            Building local healthcare capacity
+            Building local healthcare capacity.
           </p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-          <h4 className="text-xl font-bold text-[#1D347A]">🏥 Community Health Access</h4>
+
+        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
+          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
+            🏥 2
+          </h4>
+          <p className="font-semibold text-gray-800">
+            Permanent Health Posts
+          </p>
           <p className="text-gray-600 mt-2">
-            Establishing permanent health posts in remote areas
+            Improving healthcare access in remote communities.
           </p>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -750,7 +950,7 @@ export default function HomePage() {
         
         {/* Logo & About */}
         <div>
-          <img src={ncdolgo} alt="NCDO Logo" className="w-28 mb-4" />
+          <img src={ncdlgo} alt="NCDO Logo" className="w-28 mb-4" />
           <p className="text-sm leading-relaxed">
             Noomayianat Community Development Organization (NCDO) is a 
             non-profit working in Kajiado County, Kenya. <br />
