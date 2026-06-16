@@ -784,154 +784,180 @@ const navigate = useNavigate();
 
 
 {/* Real Stories Section */}
-<section id="stories" className="py-24 px-6 bg-[#EEF4FF]">
+{/* Integrated Landscape - Advanced Impact Stories */}
+{/* Integrated Landscape - Advanced Impact Stories */}
+<section className="py-16 md:py-24 px-4 md:px-6 bg-[#EEF4FF]">
   <div className="max-w-7xl mx-auto">
 
-    {/* Section Header */}
-    <div className="text-center mb-16">
-      <span className="inline-block px-4 py-2 bg-[#1D347A]/10 text-[#1D347A] rounded-full text-sm font-semibold mb-4">
-        Impact Stories
+    {/* Header */}
+    <div className="text-center mb-12 md:mb-16">
+      <span className="inline-block px-4 md:px-5 py-2 bg-[#1D347A]/10 text-[#1D347A] rounded-full text-xs md:text-sm font-semibold mb-4 tracking-wide">
+        Integrated Landscape Programme
       </span>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold text-[#1D347A] mb-4">
-        Real Stories of Transformation
+      <h2 className="text-3xl md:text-5xl font-extrabold text-[#1D347A] mb-4 leading-tight">
+        Impact Stories Across Key Sectors
       </h2>
 
-      <div className="w-24 h-1 bg-[#7382AD] mx-auto rounded-full mb-6"></div>
+      <div className="w-20 md:w-24 h-1 bg-[#7382AD] mx-auto rounded-full mb-6"></div>
 
-      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-        Discover how our programs are creating lasting change through education,
-        healthcare, and community empowerment across Loitokitok and beyond.
+      <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+        Integrated interventions are strengthening ecosystems, improving livelihoods,
+        and building long-term community resilience.
       </p>
     </div>
 
-    {/* Education Story */}
-    <div className="mb-20">
-      <div
-        className="relative rounded-3xl overflow-hidden shadow-2xl"
-        style={{
-          backgroundImage: `url(${require("../images/ncdo3.jpg")})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="bg-gradient-to-r from-[#1D347A]/90 to-[#1D347A]/75 p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Transforming Lives Through Education
+    {/* GRID */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+      {/* CARD 1 */}
+      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+
+        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#1D347A]">
+
+          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#1D347A] uppercase">
+            Water Systems
+          </span>
+
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
+            Restoring Water Security & Watersheds
           </h3>
 
-          <p className="max-w-3xl leading-relaxed text-lg">
-            Since 2020, our education support program has provided scholarships
-            to over 200 students, built new classrooms, and established a
-            computer lab serving hundreds of learners annually.
+          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
+            Communities are gaining reliable access to clean water through restored
+            ecosystems and improved governance systems.
           </p>
+
+          <div className="space-y-2 text-gray-700 text-sm">
+            <div>✔ Watershed & spring protection restored</div>
+            <div>✔ Wetlands rehabilitated for ecosystem balance</div>
+            <div>✔ Community water governance strengthened</div>
+            <div>✔ Water infrastructure improved & expanded</div>
+            <div>✔ Water quality monitoring systems introduced</div>
+          </div>
+
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
-          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
-            🎓 200+
-          </h4>
-          <p className="font-semibold text-gray-800">
-            Scholarships Awarded
-          </p>
-          <p className="text-gray-600 mt-2">
-            Supporting students from primary to university level.
-          </p>
-        </div>
+      {/* CARD 2 */}
+      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
-          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
-            📈 40%
-          </h4>
-          <p className="font-semibold text-gray-800">
-            Increase in Graduation Rates
-          </p>
-          <p className="text-gray-600 mt-2">
-            Measurable improvements in educational outcomes.
-          </p>
-        </div>
+        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#7382AD]">
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
-          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
-            🏆 Excellence
-          </h4>
-          <p className="font-semibold text-gray-800">
-            Educational Achievement
-          </p>
-          <p className="text-gray-600 mt-2">
-            Building brighter futures through quality education.
-          </p>
-        </div>
-      </div>
-    </div>
+          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#7382AD] uppercase">
+            Agriculture
+          </span>
 
-    {/* Health Story */}
-    <div>
-      <div
-        className="relative rounded-3xl overflow-hidden shadow-2xl"
-        style={{
-          backgroundImage: `url(${require("../images/ncdo3.jpg")})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="bg-gradient-to-r from-[#7382AD]/90 to-[#7382AD]/75 p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Improving Community Health
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
+            Strengthening Climate-Smart Food Systems
           </h3>
 
-          <p className="max-w-3xl leading-relaxed text-lg">
-            Mobile health clinics have reached thousands of community members,
-            trained local health workers, and expanded healthcare access in
-            remote areas.
+          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
+            Farmers are improving productivity and resilience through sustainable
+            and market-driven agricultural systems.
           </p>
+
+          <div className="space-y-2 text-gray-700 text-sm">
+            <div>✔ Climate-smart agriculture adoption</div>
+            <div>✔ Sustainable irrigation systems introduced</div>
+            <div>✔ Soil & water conservation improved</div>
+            <div>✔ Crop diversification enhanced food security</div>
+            <div>✔ Value chains & market access strengthened</div>
+          </div>
+
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
-          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
-            👩‍⚕️ 2,000+
-          </h4>
-          <p className="font-semibold text-gray-800">
-            People Served
-          </p>
-          <p className="text-gray-600 mt-2">
-            Through outreach and mobile healthcare services.
-          </p>
-        </div>
+      {/* CARD 3 */}
+      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
-          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
-            💊 50
-          </h4>
-          <p className="font-semibold text-gray-800">
-            Health Workers Trained
-          </p>
-          <p className="text-gray-600 mt-2">
-            Building local healthcare capacity.
-          </p>
-        </div>
+        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#1D347A]">
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition duration-300">
-          <h4 className="text-2xl font-bold text-[#1D347A] mb-2">
-            🏥 2
-          </h4>
-          <p className="font-semibold text-gray-800">
-            Permanent Health Posts
+          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#1D347A] uppercase">
+            Rangelands
+          </span>
+
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
+            Restoring Rangelands & Climate Resilience
+          </h3>
+
+          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
+            Degraded grazing lands are being restored to improve livestock productivity
+            and climate resilience.
           </p>
-          <p className="text-gray-600 mt-2">
-            Improving healthcare access in remote communities.
-          </p>
+
+          <div className="space-y-2 text-gray-700 text-sm">
+            <div>✔ Rangeland restoration ongoing</div>
+            <div>✔ Sustainable grazing systems introduced</div>
+            <div>✔ Livestock productivity improved</div>
+            <div>✔ Drought preparedness strengthened</div>
+            <div>✔ Community grazing governance enhanced</div>
+          </div>
+
         </div>
       </div>
+
+      {/* CARD 4 */}
+      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+
+        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#7382AD]">
+
+          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#7382AD] uppercase">
+            Ecosystems
+          </span>
+
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
+            Conserving Biodiversity & Ecosystems
+          </h3>
+
+          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
+            Ecosystem restoration is improving biodiversity and strengthening
+            human–wildlife coexistence.
+          </p>
+
+          <div className="space-y-2 text-gray-700 text-sm">
+            <div>✔ Biodiversity conservation strengthened</div>
+            <div>✔ Habitat restoration implemented</div>
+            <div>✔ Human-wildlife coexistence improved</div>
+            <div>✔ Climate adaptation actions scaled</div>
+            <div>✔ Environmental awareness increased</div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* FULL WIDTH CARD */}
+      <div className="md:col-span-2 bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+
+        <div className="p-6 md:p-10 border-l-6 md:border-l-8 border-[#1D347A]">
+
+          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#1D347A] uppercase">
+            Livelihoods & Governance
+          </span>
+
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
+            Empowering Communities for Sustainable Livelihoods
+          </h3>
+
+          <p className="text-sm md:text-base text-gray-600 mb-6 leading-relaxed max-w-4xl">
+            Communities are building resilient economies through enterprise development,
+            inclusive governance, and strengthened local institutions.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-gray-700 text-sm">
+            <div>✔ Livelihood diversification & enterprise growth</div>
+            <div>✔ Women & youth empowerment strengthened</div>
+            <div>✔ Financial inclusion expanded</div>
+            <div>✔ Community governance improved</div>
+            <div>✔ Capacity building & partnerships enhanced</div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
   </div>
 </section>
-
 
 
 
