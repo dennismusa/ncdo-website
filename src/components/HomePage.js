@@ -35,7 +35,7 @@ import partner13 from "../images/partner13.png";
 import partner14 from "../images/partner14.png";
 import partner15 from "../images/partner15.png";
 import partner16 from "../images/partner16.png";
-import partner17 from "../images/partner17.png";
+
 import partner18 from "../images/partner18.png";
 import partner19 from "../images/partner19.png";
 
@@ -62,7 +62,7 @@ export default function HomePage() {
   ]
 },
  {
-  title: "spring desilting and spring fencing",
+  title: "spring protection and rehabilitation",
   img: springfencing, 
   desc: `This program focuses reducing environmental pollution and improve public 
   health by promoting waste segregation, recycling, proper disposal systems, 
@@ -217,7 +217,7 @@ export default function HomePage() {
 
 const [videoOpen, setVideoOpen] = useState(false);
 const navigate = useNavigate();
-  const partnerLogos = [partner11, partner12, partner13, partner14, partner15, partner16, partner17, partner18, partner19];
+  const partnerLogos = [partner11, partner12, partner13, partner14, partner15, partner16, partner18, partner19];
 
   // 🔹 Background slideshow setup
   const bgImages = [ncdo3, ncdo4, ncdo2, baraza];
@@ -958,7 +958,6 @@ const navigate = useNavigate();
     </div>
   </div>
 </section>
-
 
 
 
