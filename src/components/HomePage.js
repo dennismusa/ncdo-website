@@ -283,7 +283,7 @@ const navigate = useNavigate();
 
           <li><a href="#about" className="hover:text-[#F2ECE8]">Who We Are</a></li>
           <li><a href="#programs" className="hover:text-[#F2ECE8]">Programs</a></li>
-          <li><a href="#stories" className="hover:text-[#F2ECE8]">Impact</a></li>
+          <li><a href="#Impact" className="hover:text-[#F2ECE8]">Impact</a></li>
           <li><a href="#contact" className="hover:text-[#F2ECE8]">Contact Us</a></li>
         </ul>
 
@@ -786,176 +786,190 @@ const navigate = useNavigate();
 {/* Real Stories Section */}
 {/* Integrated Landscape - Advanced Impact Stories */}
 {/* Integrated Landscape - Advanced Impact Stories */}
-<section className="py-16 md:py-24 px-4 md:px-6 bg-[#EEF4FF]">
+<section
+  id="Impact"
+  className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-[#EAF3FF] via-white to-[#F5FAFF]"
+>
   <div className="max-w-7xl mx-auto">
 
-    {/* Header */}
-    <div className="text-center mb-12 md:mb-16">
-      <span className="inline-block px-4 md:px-5 py-2 bg-[#1D347A]/10 text-[#1D347A] rounded-full text-xs md:text-sm font-semibold mb-4 tracking-wide">
-        Integrated Landscape Programme
+    {/* HEADER */}
+    <div className="text-center mb-14">
+      <span className="inline-flex items-center gap-2 px-6 py-2 bg-blue-100 text-blue-800 rounded-full text-xs md:text-sm font-semibold tracking-wide shadow-sm">
+        🌍 Integrated Landscape Programme
       </span>
 
-      <h2 className="text-3xl md:text-5xl font-extrabold text-[#1D347A] mb-4 leading-tight">
+      <h2 className="text-3xl md:text-5xl font-extrabold text-[#0F2D5C] mt-5 mb-4 leading-tight">
         Impact Stories Across Key Sectors
       </h2>
 
-      <div className="w-20 md:w-24 h-1 bg-[#7382AD] mx-auto rounded-full mb-6"></div>
+      <div className="w-28 h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-500 mx-auto rounded-full mb-6"></div>
 
       <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
         Integrated interventions are strengthening ecosystems, improving livelihoods,
-        and building long-term community resilience.
+        and building long-term community resilience across landscapes.
       </p>
     </div>
 
-    {/* GRID */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    {/* IMPACT BANNER */}
+    <div className="mb-16 bg-white/60 backdrop-blur-xl border border-blue-100 rounded-3xl p-6 md:p-10 shadow-lg">
+      
+      <p className="text-center text-sm md:text-base text-gray-700 font-medium mb-8">
+        Through our <span className="font-bold text-blue-700">128 winners</span>,
+        we have transformed the lives of over
+        <span className="font-bold text-blue-700"> 400 million people</span>, and counting.
+      </p>
 
-      {/* CARD 1 */}
-      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
 
-        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#1D347A]">
-
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#1D347A] uppercase">
-            Water Systems
-          </span>
-
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
-            Restoring Water Security & Watersheds
-          </h3>
-
-          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
-            Communities are gaining reliable access to clean water through restored
-            ecosystems and improved governance systems.
-          </p>
-
-          <div className="space-y-2 text-gray-700 text-sm">
-            <div>✔ Watershed & spring protection restored</div>
-            <div>✔ Wetlands rehabilitated for ecosystem balance</div>
-            <div>✔ Community water governance strengthened</div>
-            <div>✔ Water infrastructure improved & expanded</div>
-            <div>✔ Water quality monitoring systems introduced</div>
+        {[
+          ["1.39", "Billion Tonnes CO₂ reduced"],
+          ["11.4M", "People gained safe drinking water"],
+          ["17M", "People gained nutritious food"],
+          ["841K+", "Jobs created"],
+          ["1.2M", "Access to healthcare"],
+          ["480K+", "Students supported"],
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="group bg-gradient-to-b from-white to-blue-50 border border-blue-100 rounded-2xl p-5 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300"
+          >
+            <div className="text-2xl md:text-3xl font-extrabold text-blue-800 group-hover:scale-110 transition">
+              {item[0]}
+            </div>
+            <div className="text-[11px] md:text-xs text-gray-600 mt-2 leading-snug">
+              {item[1]}
+            </div>
           </div>
+        ))}
 
-        </div>
       </div>
+    </div>
 
-      {/* CARD 2 */}
-      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+    {/* SECTORS GRID */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
 
-        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#7382AD]">
+      {[
+        {
+          title: "Water Systems",
+          desc: "Communities gaining reliable access to clean water through restored ecosystems.",
+          color: "blue",
+          points: [
+            "Watershed protection restored",
+            "Wetlands rehabilitated",
+            "Community governance strengthened",
+            "Water infrastructure improved",
+            "Water quality monitoring introduced"
+          ]
+        },
+        {
+          title: "Agriculture",
+          desc: "Farmers improving productivity through climate-smart systems.",
+          color: "sky",
+          points: [
+            "Climate-smart agriculture adoption",
+            "Sustainable irrigation systems",
+            "Soil conservation improved",
+            "Crop diversification enhanced",
+            "Market access strengthened"
+          ]
+        },
+        {
+          title: "Rangelands",
+          desc: "Restoring degraded grazing lands for resilience and productivity.",
+          color: "blue",
+          points: [
+            "Rangeland restoration ongoing",
+            "Sustainable grazing systems",
+            "Livestock productivity improved",
+            "Drought preparedness strengthened",
+            "Grazing governance enhanced"
+          ]
+        },
+        {
+          title: "Ecosystems",
+          desc: "Protecting biodiversity and strengthening coexistence.",
+          color: "sky",
+          points: [
+            "Biodiversity conservation strengthened",
+            "Habitat restoration implemented",
+            "Human-wildlife coexistence improved",
+            "Climate adaptation scaled",
+            "Environmental awareness increased"
+          ]
+        }
+      ].map((sector, i) => (
+        <div
+          key={i}
+          className="group bg-white/70 backdrop-blur-xl border border-blue-100 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300 overflow-hidden"
+        >
 
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#7382AD] uppercase">
-            Agriculture
-          </span>
+          <div className="p-6 md:p-8 border-l-8 border-blue-500">
 
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
-            Strengthening Climate-Smart Food Systems
-          </h3>
+            <span className="text-xs font-bold tracking-widest text-blue-500 uppercase">
+              Sector
+            </span>
 
-          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
-            Farmers are improving productivity and resilience through sustainable
-            and market-driven agricultural systems.
-          </p>
+            <h3 className="text-xl md:text-2xl font-bold text-[#0F2D5C] mt-2 mb-3 group-hover:text-blue-700 transition">
+              {sector.title}
+            </h3>
 
-          <div className="space-y-2 text-gray-700 text-sm">
-            <div>✔ Climate-smart agriculture adoption</div>
-            <div>✔ Sustainable irrigation systems introduced</div>
-            <div>✔ Soil & water conservation improved</div>
-            <div>✔ Crop diversification enhanced food security</div>
-            <div>✔ Value chains & market access strengthened</div>
+            <p className="text-sm md:text-base text-gray-600 mb-5">
+              {sector.desc}
+            </p>
+
+            <ul className="space-y-2 text-sm text-gray-700">
+              {sector.points.map((p, idx) => (
+                <li key={idx} className="flex gap-2 items-start">
+                  <span className="text-blue-600 mt-[2px]">✔</span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+
           </div>
-
         </div>
-      </div>
-
-      {/* CARD 3 */}
-      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
-
-        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#1D347A]">
-
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#1D347A] uppercase">
-            Rangelands
-          </span>
-
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
-            Restoring Rangelands & Climate Resilience
-          </h3>
-
-          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
-            Degraded grazing lands are being restored to improve livestock productivity
-            and climate resilience.
-          </p>
-
-          <div className="space-y-2 text-gray-700 text-sm">
-            <div>✔ Rangeland restoration ongoing</div>
-            <div>✔ Sustainable grazing systems introduced</div>
-            <div>✔ Livestock productivity improved</div>
-            <div>✔ Drought preparedness strengthened</div>
-            <div>✔ Community grazing governance enhanced</div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* CARD 4 */}
-      <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
-
-        <div className="p-6 md:p-8 border-l-6 md:border-l-8 border-[#7382AD]">
-
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#7382AD] uppercase">
-            Ecosystems
-          </span>
-
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
-            Conserving Biodiversity & Ecosystems
-          </h3>
-
-          <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
-            Ecosystem restoration is improving biodiversity and strengthening
-            human–wildlife coexistence.
-          </p>
-
-          <div className="space-y-2 text-gray-700 text-sm">
-            <div>✔ Biodiversity conservation strengthened</div>
-            <div>✔ Habitat restoration implemented</div>
-            <div>✔ Human-wildlife coexistence improved</div>
-            <div>✔ Climate adaptation actions scaled</div>
-            <div>✔ Environmental awareness increased</div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* FULL WIDTH CARD */}
-      <div className="md:col-span-2 bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
-
-        <div className="p-6 md:p-10 border-l-6 md:border-l-8 border-[#1D347A]">
-
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#1D347A] uppercase">
-            Livelihoods & Governance
-          </span>
-
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-3 leading-snug">
-            Empowering Communities for Sustainable Livelihoods
-          </h3>
-
-          <p className="text-sm md:text-base text-gray-600 mb-6 leading-relaxed max-w-4xl">
-            Communities are building resilient economies through enterprise development,
-            inclusive governance, and strengthened local institutions.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-gray-700 text-sm">
-            <div>✔ Livelihood diversification & enterprise growth</div>
-            <div>✔ Women & youth empowerment strengthened</div>
-            <div>✔ Financial inclusion expanded</div>
-            <div>✔ Community governance improved</div>
-            <div>✔ Capacity building & partnerships enhanced</div>
-          </div>
-
-        </div>
-      </div>
+      ))}
 
     </div>
+
+    {/* FULL WIDTH CARD */}
+    <div className="mt-10 bg-white/70 backdrop-blur-xl rounded-3xl shadow-xl border border-blue-100 overflow-hidden hover:shadow-2xl transition">
+
+      <div className="p-6 md:p-10 border-l-8 border-blue-600">
+
+        <span className="text-xs font-bold tracking-widest text-blue-600 uppercase">
+          Livelihoods & Governance
+        </span>
+
+        <h3 className="text-2xl md:text-3xl font-bold text-[#0F2D5C] mt-2 mb-3">
+          Empowering Communities for Sustainable Livelihoods
+        </h3>
+
+        <p className="text-sm md:text-base text-gray-600 mb-6 max-w-4xl">
+          Communities are building resilient economies through enterprise development,
+          inclusive governance, and strengthened local institutions.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm text-gray-700">
+
+          {[
+            "Livelihood diversification & enterprise growth",
+            "Women & youth empowerment strengthened",
+            "Financial inclusion expanded",
+            "Community governance improved",
+            "Capacity building & partnerships enhanced"
+          ].map((item, i) => (
+            <div key={i} className="flex gap-2">
+              <span className="text-blue-500">✔</span>
+              {item}
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
