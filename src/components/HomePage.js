@@ -390,7 +390,7 @@ const navigate = useNavigate();
       </a>
 
       <a
-        href="#stories"
+        href="#Impact"
         onClick={() => setMenuOpen(false)}
         className="py-4 text-lg border-b border-white/10 hover:text-red-500 hover:translate-x-1 transition-all duration-300"
       >
@@ -1091,7 +1091,7 @@ const navigate = useNavigate();
           <ul className="space-y-2 text-sm">
             <li><a href="#programs" className="hover:text-yellow-400">Volunteer</a></li>
             <li><a href="#donate" className="hover:text-yellow-400">Make a Donation</a></li>
-            <li><a href="#impact" className="hover:text-yellow-400">Impact Stories</a></li>
+            <li><a href="#Impact" className="hover:text-yellow-400">Impact Stories</a></li>
             <li><a href="#contact" className="hover:text-yellow-400">Contact Us</a></li>
           </ul>
         </div>
